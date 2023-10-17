@@ -1,0 +1,13 @@
+::-webkit-scrollbar {
+    width: .45rem
+}
+
+::-webkit-scrollbar-track {
+    background: #090A0E;
+    margin-block: .3rem;
+}
+
+::-webkit-scrollbar-thumb {
+    background: red;
+    border-radius: 100vw;
+}

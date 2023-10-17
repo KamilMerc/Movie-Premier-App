@@ -1,0 +1,25 @@
+.moviecard {
+    margin-bottom: 30px;
+    cursor: pointer;
+    transition: .2s;
+
+    &:hover {
+        transform: scale(1.05);
+    }
+
+    .moviecover, .movie-placeholder {
+        width: 300px;
+        height: 450px;
+    }
+
+    .movie-placeholder {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        align-items: center;
+        background-color: white;
+        color: red;
+        font-weight: bold;
+      }
+
+  }
