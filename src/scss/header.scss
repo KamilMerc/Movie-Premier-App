@@ -25,6 +25,10 @@
       padding: 10px 5px;
       border: none;
       border-radius: 10px;
+
+      &:focus {
+        outline: none;
+      }
     }
   }
 
