@@ -200,7 +200,7 @@ function App() {
           </form>
 
           {/* Calling handleOnInput function on input that search movies by text that we type in input*/}
-          <form onInput={handleOnInput}>
+          <form onInput={handleOnInput} onSubmit={(e) => {e.preventDefault()}}>
             <input type="text" placeholder="Search by movie title" />
           </form>
         </div>
