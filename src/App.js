@@ -120,6 +120,18 @@ function App() {
   };
 
 
+  //Fetch movies by selected genre
+  const genreSelection = (genre) => {
+    // Reset values of current, next and prev page to start from page 1 when you change genre
+    setCurrentPage(1)
+    setNextPage(2)
+    setPrevPage(0)
+    //Passing to fetchMovies function URL with 'with_genre' attribute that allows get movies only with particular genre
+    fetchMovies(`${URL}&with_genres=${genre}`)
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  }
+
+
   //Passing fetched movies to 'MovieCard' component
   const renderMovies = () =>
     movies.map((movie) => <MovieCard key={movie.id} movie={movie} />);
@@ -160,13 +172,7 @@ function App() {
               id="genres"
               name="genres"
               onChange={(e) => {
-                // Reset values of current, next and prev page to start from page 1 when you change genre
-                setCurrentPage(1)
-                setNextPage(2)
-                setPrevPage(0)
-                //Passing to fetchMovies function URL with 'with_genre' attribute that allows get movies only with particular genre
-                fetchMovies(`${URL}&with_genres=${e.target.value}`)
-                window.scrollTo({top: 0, behavior: 'smooth'});
+                genreSelection(e.target.value)
               }}
             >
               {/* Genre options */}
