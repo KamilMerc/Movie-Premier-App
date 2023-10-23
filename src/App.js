@@ -2,6 +2,7 @@
 import "./scss/App.scss";
 import Home from "./pages/Home";
 import Error from "./pages/Error";
+import DetailPage from "./pages/DetailPage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 
 
@@ -12,6 +13,7 @@ function App() {
      <Router>
         <Routes>
           <Route index element={<Home/>}></Route>
+          <Route path="movie/:id" element={<DetailPage/>}></Route>
           <Route path="/*" element={<Error/>}></Route>
         </Routes>
      </Router>

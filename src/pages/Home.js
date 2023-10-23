@@ -87,5 +87,4 @@ function Home() {
   );
 }
 
-//Export Home.js to be able to use it in App.js 
 export default Home;
