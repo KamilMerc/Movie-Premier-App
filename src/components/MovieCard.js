@@ -18,6 +18,6 @@ const MovieCard = ({movie}) => {
     );
 };
 
-//Export movie cards to be able to refer to them in App.js file by calling renderMovies function in 'container' div
+//Export movie cards to be able to refer to them in Home.js file by calling renderMovies function in 'container' div
 export default MovieCard 
 
