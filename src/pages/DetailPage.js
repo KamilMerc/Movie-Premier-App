@@ -5,8 +5,10 @@ import { useParams } from 'react-router-dom'
 function DetailPage() {
     const { id } = useParams();
     const [movie, setMovie] = useState([]);
+    const [backdrop, setBackdrop] = useState([])
 
-    const URL = `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_API_KEY}`
+    const URL = `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_API_KEY}`;
+    const backdropImage = `https://image.tmdb.org/t/p/original/${backdrop}`
     // /videos to get tarilers
 
     async function getMovie() {
@@ -15,6 +17,7 @@ function DetailPage() {
             .then((data) => {
                 console.log(data)
                 setMovie(data)
+                setBackdrop(data.backdrop_path)
             })
     }
 
@@ -23,7 +26,9 @@ function DetailPage() {
     },[])
 
     return(
-        <h1>{movie.title}</h1>
+        <div>
+            <div className="banner" style={{backgroundImage:`url(${backdropImage})`}}></div>
+        </div>
     )
 }
 
