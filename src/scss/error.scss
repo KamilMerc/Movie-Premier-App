@@ -1,0 +1,17 @@
+.backtohome {
+    background-color: white;
+    border: none;
+    padding: 10px 15px;
+    margin-top: 30px;
+    border-radius: 15px;
+    font-weight: bold;
+    font-size: .9rem;
+    color: red;
+    cursor: pointer;
+    transition: .2s;
+
+    &:hover {
+        transform: scale(1.1);
+    }
+}
+

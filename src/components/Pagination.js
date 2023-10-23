@@ -3,7 +3,8 @@ import React from "react";
 import { useEffect } from "react";
 
 const Pagination = (props) => {
-      //Add or remove 'disabled' class to pagination buttons
+  
+  //Add or remove 'disabled' class to pagination buttons
   const disableBtns = () => {
     if(props.btnNext && props.btnPrev) {
       if(props.currentPage <= 1) {
@@ -24,7 +25,7 @@ const Pagination = (props) => {
   //Calling disableBtns function
   useEffect(() => {
     disableBtns();
-  })
+  }) 
 
 
   //Pagination to the next page
