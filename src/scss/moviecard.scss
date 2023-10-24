@@ -5,6 +5,7 @@
 
     &:hover {
         transform: scale(1.05);
+        color: red;
     }
 
     .moviecover, .movie-placeholder {
@@ -13,13 +14,7 @@
     }
 
     .movie-placeholder {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        align-items: center;
-        background-color: white;
-        color: red;
-        font-weight: bold;
+        @include placeholder;
       }
 
   }
