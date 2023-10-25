@@ -2,6 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom'
 import DetailPageMovieInfo from "../components/DetailPageMovieInfo";
+import DetailPageBackdrop from "../components/DetailPageBackdrop";
 
 function DetailPage() {
     const { id } = useParams();
@@ -39,7 +40,9 @@ function DetailPage() {
 
     return(
         <div className="detail-page-wrapper">
-            <div className="backdrop" style={{backgroundImage:`url(${backdropImage})`}}></div>
+            <DetailPageBackdrop
+                backdropImage={backdropImage}
+            />
 
             {/* Call DetailPageMovieInfo component and pass props to it */}
             <DetailPageMovieInfo
