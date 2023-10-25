@@ -6,7 +6,7 @@ import Header from "../components/Header";
 import PaginationPageInfo from "../components/PaginationPageInfo";
 
 function Home() {
-  //API key and URL
+  //API URL
   const URL = `${process.env.REACT_APP_BASE_URL}/now_playing${process.env.REACT_APP_API_KEY}`;
 
   //Pagination buttons

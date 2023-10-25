@@ -24,7 +24,6 @@ function DetailPage() {
         await fetch(URL)
             .then((res) => res.json())
             .then((data) => {
-                console.log(data)
                 setMovie(data)
                 setBackdrop(data.backdrop_path)
                 setPoster(data.poster_path)
@@ -43,6 +42,7 @@ function DetailPage() {
         <div className="detail-page-wrapper">
             <div className="backdrop" style={{backgroundImage:`url(${backdropImage})`}}></div>
 
+            {/* Call DetailPageMovieInfo component and pass props to it */}
             <DetailPageMovieInfo
                 movie={movie}
                 genres={genres}

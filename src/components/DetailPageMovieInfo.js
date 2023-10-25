@@ -12,7 +12,6 @@ const DetailPageMovieInfo = (props) => {
         await fetch(creditsUrl)
             .then((res) => res.json())
             .then((data) => {
-                console.log(data)
                 setDirector(data.crew.filter((d) => d.job === "Director"))
                 setWriter(data.crew.filter((d) => d.job === "Screenplay" ||  d.job === "Writer"))
             })
@@ -22,6 +21,8 @@ const DetailPageMovieInfo = (props) => {
         getCastAndCrew()
     },[])
 
+
+    //Change minutes to hours 
     const minutesToHours = () => {
         if(props.runtime) {
             const hours = Math.floor(props.runtime/60);
@@ -55,7 +56,9 @@ const DetailPageMovieInfo = (props) => {
                         ))}
                     </div>
 
-                    <div className="crew director"><strong>Director: </strong>{director.length !== 0 ? director.map((d, i) => (
+                    {/* map director array to get name and add "," when there is next record*/}
+                    <div className="crew director"><strong>Director: </strong>
+                    {director.length !== 0 ? director.map((d, i) => (
                         <p key={i}>
                             {d.name}
                             {director.length - 1 !== i && ", "}
@@ -63,6 +66,7 @@ const DetailPageMovieInfo = (props) => {
                     )) : <p>No director/s found</p>
                     }</div>
 
+                    {/* map director array to get name and add "," when there is next record*/}
                     <div className="crew writer"><strong>Writer: </strong>
                     {writer.length !== 0 ? writer.map((w, i) => (
                         <p key={i}>
