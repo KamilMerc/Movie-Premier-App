@@ -7,9 +7,7 @@ import PaginationPageInfo from "../components/PaginationPageInfo";
 
 function Home() {
   //API key and URL
-  const API_URL = "https://api.themoviedb.org/3";
-  const API_KEY = `?api_key=${process.env.REACT_APP_API_KEY}`;
-  const URL = `${API_URL}/movie/now_playing${API_KEY}`;
+  const URL = `${process.env.REACT_APP_BASE_URL}/now_playing${process.env.REACT_APP_API_KEY}`;
 
   //Pagination buttons
   const btnPrev = document.querySelector('.prev');

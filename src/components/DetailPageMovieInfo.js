@@ -1,6 +1,26 @@
 import React from "react";
+import { useEffect, useState } from "react";
 
 const DetailPageMovieInfo = (props) => {
+
+    const [director, setDirector] = useState([])
+    const [writer, setWriter] = useState([])
+
+    const creditsUrl = `${process.env.REACT_APP_BASE_URL}${props.id}/credits${process.env.REACT_APP_API_KEY}`
+
+    async function getCastAndCrew() {
+        await fetch(creditsUrl)
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(data)
+                setDirector(data.crew.filter((d) => d.job === "Director"))
+                setWriter(data.crew.filter((d) => d.job === "Screenplay" ||  d.job === "Writer"))
+            })
+    }
+
+    useEffect(() => {
+        getCastAndCrew()
+    },[])
 
     const minutesToHours = () => {
         if(props.runtime) {
@@ -35,19 +55,19 @@ const DetailPageMovieInfo = (props) => {
                         ))}
                     </div>
 
-                    <div className="crew director"><strong>Director: </strong>{props.director.length !== 0 ? props.director.map((d, i) => (
+                    <div className="crew director"><strong>Director: </strong>{director.length !== 0 ? director.map((d, i) => (
                         <p key={i}>
                             {d.name}
-                            {props.director.length - 1 !== i && ", "}
+                            {director.length - 1 !== i && ", "}
                         </p>
                     )) : <p>No director/s found</p>
                     }</div>
 
                     <div className="crew writer"><strong>Writer: </strong>
-                    {props.writer.length !== 0 ? props.writer.map((w, i) => (
+                    {writer.length !== 0 ? writer.map((w, i) => (
                         <p key={i}>
                             {w.name}
-                            {props.writer.length - 1 !== i && ", "}
+                            {writer.length - 1 !== i && ", "}
                         </p>
                     )) : <p>No writer/s found</p>
                     }</div>
