@@ -10,6 +10,7 @@ function DetailPage() {
     const [genres, setGenres] = useState([])
     const [releaseDate, setReleaseDate] = useState([])
     const [runtime, setRuntime] = useState([])
+    const [voteAverage, setVoteAverage] = useState([])
     const [director, setDirector] = useState([])
     const [writer, setWriter] = useState([])
 
@@ -36,6 +37,7 @@ function DetailPage() {
                 setGenres(data.genres)
                 setReleaseDate(data.release_date)
                 setRuntime(data.runtime)
+                setVoteAverage(Math.round(data.vote_average * 10)/10)
             })
     }
 
@@ -55,9 +57,13 @@ function DetailPage() {
     },[])
     
     const minutesToHours = () => {
-        const hours = Math.floor(runtime/60);
-        const minutes = runtime % 60;
-        return `Runtime: ${hours}h ${minutes > 0 ? `${minutes}m` : ""}`
+        if(runtime) {
+            const hours = Math.floor(runtime/60);
+            const minutes = runtime % 60;
+            return `Runtime: ${hours}h ${minutes > 0 ? `${minutes}m` : ""}`
+        } else {
+            return "Runtime: None"
+        }
     } 
 
     return(
@@ -73,8 +79,9 @@ function DetailPage() {
                     <h3 className="tagline">{movie.tagline ? movie.tagline : <h3 className="no-tagline">No tagline found</h3>}</h3>
 
                     <div className="releaseanddate">
-                        <p className="release-date">Release date: {movie.release_date ? releaseDate : "No release date found"}</p>
+                        <p className="release-date">Release date: {movie.release_date ? releaseDate : "None"}</p>
                         <p className="runtime">{minutesToHours()}</p>
+                        <p className="averageVote">Average vote: {movie.vote_average ? voteAverage : "None"}</p>
                     </div>
 
                     <div className="genres">
@@ -83,22 +90,25 @@ function DetailPage() {
                         ))}
                     </div>
 
-                    <div className="crew director"><strong>Director: </strong>{director.map((d, i) => (
+                    <div className="crew director"><strong>Director: </strong>{director.length !== 0 ? director.map((d, i) => (
                         <p key={i}>
                             {d.name}
                             {director.length - 1 !== i && ", "}
                         </p>
-                    ))}</div>
+                    )) : <p>No director/s found</p>
+                    }</div>
 
-                    <div className="crew writer"><strong>Writer: </strong>{writer.map((w, i) => (
+                    <div className="crew writer"><strong>Writer: </strong>
+                    {writer.length !== 0 ? writer.map((w, i) => (
                         <p key={i}>
                             {w.name}
                             {writer.length - 1 !== i && ", "}
                         </p>
-                    ))}</div>
+                    )) : <p>No writer/s found</p>
+                    }</div>
 
                     <h2 className="ovr">Overview</h2>
-                    {movie.overview ? <p className="overview">{movie.overview}</p> : <p className="no-overview">No overview found</p>}
+                    {movie.overview ? <p className="overview">{movie.overview}</p> : <p className="overview">No overview found</p>}
                     
                 </div>
             </div>
