@@ -10,8 +10,15 @@ function DetailPage() {
     const [genres, setGenres] = useState([])
     const [releaseDate, setReleaseDate] = useState([])
     const [runtime, setRuntime] = useState([])
+    const [director, setDirector] = useState([])
+    const [writer, setWriter] = useState([])
 
-    const URL = `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_API_KEY}`;
+
+    const basicUrl = `https://api.themoviedb.org/3/movie/${id}`
+    const apiKey = `?api_key=${process.env.REACT_APP_API_KEY}`
+    const URL = `${basicUrl}${apiKey}`;
+
+    const creditsUrl = `${basicUrl}/credits${apiKey}`
 
     const photosUrl = 'https://image.tmdb.org/t/p/original/'
     const backdropImage = `${photosUrl}${backdrop}`
@@ -32,8 +39,19 @@ function DetailPage() {
             })
     }
 
+    async function getCastAndCrew() {
+        await fetch(creditsUrl)
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(data)
+                setDirector(data.crew.filter((d) => d.job === "Director"))
+                setWriter(data.crew.filter((d) => d.job === "Screenplay" ||  d.job === "Writer"))
+            })
+    }
+
     useEffect(() => {
         getMovie()
+        getCastAndCrew()
     },[])
     
     const minutesToHours = () => {
@@ -65,8 +83,23 @@ function DetailPage() {
                         ))}
                     </div>
 
+                    <div className="crew director"><strong>Director: </strong>{director.map((d, i) => (
+                        <p key={i}>
+                            {d.name}
+                            {director.length - 1 !== i && ", "}
+                        </p>
+                    ))}</div>
+
+                    <div className="crew writer"><strong>Writer: </strong>{writer.map((w, i) => (
+                        <p key={i}>
+                            {w.name}
+                            {writer.length - 1 !== i && ", "}
+                        </p>
+                    ))}</div>
+
                     <h2 className="ovr">Overview</h2>
                     {movie.overview ? <p className="overview">{movie.overview}</p> : <p className="no-overview">No overview found</p>}
+                    
                 </div>
             </div>
         </div>
