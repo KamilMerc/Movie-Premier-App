@@ -15,9 +15,8 @@ function DetailPage() {
 
     const URL = `${process.env.REACT_APP_BASE_URL}${id}${process.env.REACT_APP_API_KEY}`;
 
-    const photosUrl = 'https://image.tmdb.org/t/p/original/'
-    const backdropImage = `${photosUrl}${backdrop}`
-    const posterImage = `${photosUrl}${poster}`
+    const backdropImage = `${process.env.REACT_APP_BASE_IMAGE_URL}original/${backdrop}`
+    const posterImage = `${process.env.REACT_APP_BASE_IMAGE_URL}original/${poster}`
     // /videos to get tarilers
 
     async function getMovie() {
