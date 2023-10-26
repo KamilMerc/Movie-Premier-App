@@ -1,27 +1,6 @@
 import React from "react";
-import { useEffect, useState } from "react";
 
 const DetailPageMovieInfo = (props) => {
-
-    const [director, setDirector] = useState([])
-    const [writer, setWriter] = useState([])
-
-    const creditsUrl = `${process.env.REACT_APP_BASE_URL}${props.id}/credits${process.env.REACT_APP_API_KEY}`
-
-    async function getCastAndCrew() {
-        await fetch(creditsUrl)
-            .then((res) => res.json())
-            .then((data) => {
-                console.log(data)
-                setDirector(data.crew.filter((d) => d.job === "Director"))
-                setWriter(data.crew.filter((d) => d.job === "Screenplay" ||  d.job === "Writer"))
-            })
-    }
-
-    useEffect(() => {
-        getCastAndCrew()
-    },[])
-
 
     //Change minutes to hours 
     const minutesToHours = () => {
@@ -69,12 +48,12 @@ const DetailPageMovieInfo = (props) => {
 
                     {/* Calling getDirectorOrWriterName function on director*/}
                     <div className="crew director"><strong>Director: </strong>
-                        {getDirectorOrWriterName(director, "No director/s found")}
+                        {getDirectorOrWriterName(props.director, "No director/s found")}
                     </div>
 
                     {/* Calling getDirectorOrWriterName function on writer*/}
                     <div className="crew writer"><strong>Writer: </strong>
-                        {getDirectorOrWriterName(writer, "No writer/s found")}
+                        {getDirectorOrWriterName(props.writer, "No writer/s found")}
                     </div>
 
                     <h2 className="ovr">Overview</h2>

@@ -13,8 +13,11 @@ function DetailPage() {
     const [releaseDate, setReleaseDate] = useState([])
     const [runtime, setRuntime] = useState([])
     const [voteAverage, setVoteAverage] = useState([])
+    const [director, setDirector] = useState([])
+    const [writer, setWriter] = useState([])
 
     const URL = `${process.env.REACT_APP_BASE_URL}${id}${process.env.REACT_APP_API_KEY}`;
+    const creditsUrl = `${process.env.REACT_APP_BASE_URL}${id}/credits${process.env.REACT_APP_API_KEY}`
 
     const backdropImage = `${process.env.REACT_APP_BASE_IMAGE_URL}original/${backdrop}`
     const posterImage = `${process.env.REACT_APP_BASE_IMAGE_URL}original/${poster}`
@@ -33,9 +36,21 @@ function DetailPage() {
                 setVoteAverage(Math.round(data.vote_average * 10)/10)
             })
     }
+
+
+    async function getCastAndCrew() {
+        await fetch(creditsUrl)
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(data)
+                setDirector(data.crew.filter((d) => d.job === "Director"))
+                setWriter(data.crew.filter((d) => d.job === "Screenplay" ||  d.job === "Writer"))
+            })
+    }
     
     useEffect(() => {
         getMovie()
+        getCastAndCrew()
     },[])
 
     return(
@@ -52,6 +67,8 @@ function DetailPage() {
                 runtime={runtime}
                 voteAverage={voteAverage}
                 posterImage={posterImage}
+                director={director}
+                writer={writer}
                 id={id}
             />
         </div>
