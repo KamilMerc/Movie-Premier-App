@@ -5,6 +5,7 @@ import DetailPageMovieInfo from "../components/DetailPageMovieInfo";
 import DetailPageBackdrop from "../components/DetailPageBackdrop";
 import DetailPageCast from "../components/DetailPageCast";
 import DetailPageProviders from "../components/DetailPageProviders";
+import DetailPageVideo from "../components/DetailPageVideo";
 
 function DetailPage() {
     const { id } = useParams();
@@ -24,7 +25,6 @@ function DetailPage() {
 
     const backdropImage = `${process.env.REACT_APP_BASE_IMAGE_URL}original/${backdrop}`
     const posterImage = `${process.env.REACT_APP_BASE_IMAGE_URL}original/${poster}`
-    // /videos to get tarilers
 
     async function getMovie() {
         await fetch(URL)
@@ -91,6 +91,10 @@ function DetailPage() {
                     {renderCast()}
                 </div>
             </div>
+
+            <DetailPageVideo
+                id={id}
+            />
         </div>
     )
 }
