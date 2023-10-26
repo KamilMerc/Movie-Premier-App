@@ -3,9 +3,6 @@ import React from "react";
 
 const Header = (props) => {
 
-  //Get all moviecards
-  const movieList = document.querySelectorAll(".moviecard");
-
   //Fetch movies by selected genre
   const genreSelection = (genre) => {
     // Reset values of current, next and prev page to start from page 1 when you change genre
