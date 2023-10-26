@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom'
 import DetailPageMovieInfo from "../components/DetailPageMovieInfo";
 import DetailPageBackdrop from "../components/DetailPageBackdrop";
+import DetailPageCast from "../components/DetailPageCast";
 
 function DetailPage() {
     const { id } = useParams();
@@ -15,6 +16,7 @@ function DetailPage() {
     const [voteAverage, setVoteAverage] = useState([])
     const [director, setDirector] = useState([])
     const [writer, setWriter] = useState([])
+    const [actors, setActors] = useState([])
 
     const URL = `${process.env.REACT_APP_BASE_URL}${id}${process.env.REACT_APP_API_KEY}`;
     const creditsUrl = `${process.env.REACT_APP_BASE_URL}${id}/credits${process.env.REACT_APP_API_KEY}`
@@ -45,6 +47,7 @@ function DetailPage() {
                 console.log(data)
                 setDirector(data.crew.filter((d) => d.job === "Director"))
                 setWriter(data.crew.filter((d) => d.job === "Screenplay" ||  d.job === "Writer"))
+                setActors(data.cast.slice(0,6))
             })
     }
     
@@ -52,6 +55,12 @@ function DetailPage() {
         getMovie()
         getCastAndCrew()
     },[])
+
+    
+    const renderCast = () => {
+        return actors.map((actor) => <DetailPageCast key={actor.id} actor={actor}/>)
+    }
+    
 
     return(
         <div className="detail-page-wrapper">
@@ -71,6 +80,13 @@ function DetailPage() {
                 writer={writer}
                 id={id}
             />
+
+            <div className="casts">
+                <h4 className="cast">Lead Cast:</h4>
+                <div className="actors">
+                    {renderCast()}
+                </div>
+            </div>
         </div>
     )
 }
