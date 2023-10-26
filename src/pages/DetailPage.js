@@ -45,7 +45,6 @@ function DetailPage() {
         await fetch(creditsUrl)
             .then((res) => res.json())
             .then((data) => {
-                console.log(data)
                 setDirector(data.crew.filter((d) => d.job === "Director"))
                 setWriter(data.crew.filter((d) => d.job === "Screenplay" ||  d.job === "Writer"))
                 setActors(data.cast.slice(0,6))
