@@ -12,6 +12,7 @@ const DetailPageMovieInfo = (props) => {
         await fetch(creditsUrl)
             .then((res) => res.json())
             .then((data) => {
+                console.log(data)
                 setDirector(data.crew.filter((d) => d.job === "Director"))
                 setWriter(data.crew.filter((d) => d.job === "Screenplay" ||  d.job === "Writer"))
             })
@@ -31,7 +32,17 @@ const DetailPageMovieInfo = (props) => {
         } else {
             return "Runtime: None"
         }
-    } 
+    }
+    
+    // map director or writer array to get name and add "," when there is next record
+    const getDirectorOrWriterName = (job, msg) => {
+       return job.length !== 0 ? job.map((d, i) => (
+            <p key={i}>
+                {d.name}
+                {job.length - 1 !== i && ", "}
+            </p>
+        )) : <p>{msg}</p>
+    }
 
     return (
         <>
@@ -56,25 +67,15 @@ const DetailPageMovieInfo = (props) => {
                         ))}
                     </div>
 
-                    {/* map director array to get name and add "," when there is next record*/}
+                    {/* Calling getDirectorOrWriterName function on director*/}
                     <div className="crew director"><strong>Director: </strong>
-                    {director.length !== 0 ? director.map((d, i) => (
-                        <p key={i}>
-                            {d.name}
-                            {director.length - 1 !== i && ", "}
-                        </p>
-                    )) : <p>No director/s found</p>
-                    }</div>
+                        {getDirectorOrWriterName(director, "No director/s found")}
+                    </div>
 
-                    {/* map director array to get name and add "," when there is next record*/}
+                    {/* Calling getDirectorOrWriterName function on writer*/}
                     <div className="crew writer"><strong>Writer: </strong>
-                    {writer.length !== 0 ? writer.map((w, i) => (
-                        <p key={i}>
-                            {w.name}
-                            {writer.length - 1 !== i && ", "}
-                        </p>
-                    )) : <p>No writer/s found</p>
-                    }</div>
+                        {getDirectorOrWriterName(writer, "No writer/s found")}
+                    </div>
 
                     <h2 className="ovr">Overview</h2>
                     {props.movie.overview ? <p className="overview">{props.movie.overview}</p> : <p className="overview">No overview found</p>}
