@@ -21,7 +21,7 @@
       font-weight: bold;
     }
 
-    input, select {
+    select {
       padding: 10px 5px;
       border: none;
       border-radius: 10px;
@@ -34,10 +34,6 @@
 
   @media(min-width: 720px) and (max-width: 778px) {
     .header-wrapper {
-      input {
-        margin-top: 33px;
-      }
-
       select {
         margin-top: 10px;
       }
@@ -52,7 +48,7 @@
         margin-bottom: 30px;
       }
 
-      input,select {
+      select {
         text-align: center;
       }
     }
@@ -60,7 +56,7 @@
 
   @media(max-width: 500px) {
     .header-wrapper {
-      input, select {
+      select {
         padding: 10px 1px;
       }
     }
@@ -76,7 +72,7 @@
         display: none;
       }
 
-      input,select {
+      select {
         margin-top: -10px;
       }
     }

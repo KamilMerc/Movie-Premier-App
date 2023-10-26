@@ -18,25 +18,6 @@ const Header = (props) => {
   }
   
 
-    //Movies searching
-    const handleOnInput = (e) => {
-      const inputValue = e.target.value.toLowerCase();
-      let found = "";
-      movieList.forEach((movie) => {
-        const movieTitle = movie.textContent.toLocaleLowerCase();
-  
-        if (movieTitle.includes(inputValue)) {
-          found = true;
-        }
-        if (found) {
-          movie.style.display = "";
-          found = false;
-        } else {
-          movie.style.display = "none";
-        }
-      });
-    };
-
     return (
         <header>
         <div className="header-wrapper center">
@@ -75,10 +56,6 @@ const Header = (props) => {
             </select>
           </form>
 
-          {/* Calling handleOnInput function on input that search movies by text that we type in input*/}
-          <form onInput={handleOnInput} onSubmit={(e) => {e.preventDefault()}}>
-            <input type="text" placeholder="Search by movie title" />
-          </form>
         </div>
       </header>
     )
