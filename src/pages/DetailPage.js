@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom'
 import DetailPageMovieInfo from "../components/DetailPageMovieInfo";
 import DetailPageBackdrop from "../components/DetailPageBackdrop";
 import DetailPageCast from "../components/DetailPageCast";
+import DetailPageProviders from "../components/DetailPageProviders";
 
 function DetailPage() {
     const { id } = useParams();
@@ -44,7 +45,6 @@ function DetailPage() {
         await fetch(creditsUrl)
             .then((res) => res.json())
             .then((data) => {
-                console.log(data)
                 setDirector(data.crew.filter((d) => d.job === "Director"))
                 setWriter(data.crew.filter((d) => d.job === "Screenplay" ||  d.job === "Writer"))
                 setActors(data.cast.slice(0,6))
@@ -78,6 +78,10 @@ function DetailPage() {
                 posterImage={posterImage}
                 director={director}
                 writer={writer}
+                id={id}
+            />
+
+            <DetailPageProviders
                 id={id}
             />
 

@@ -1,0 +1,20 @@
+.providers {
+    width: 100%;
+    text-align: left;
+    margin-top: 1.5rem;
+    .providerBtn {
+        text-decoration: none;
+        color: white;
+        padding: .7rem 1rem;
+        background-color: #0F1014;
+        border: 1.5px solid white;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: .2s;
+
+        &:hover {
+            border-color: red;
+            color: red;
+        }
+    }
+}
