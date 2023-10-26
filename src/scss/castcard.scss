@@ -10,10 +10,10 @@
 
     .actors {
         display: flex;
-        justify-content: space-between;
         flex-wrap: wrap;
 
         .actorCard {
+            margin-right: 1rem;
             .actorPhoto {
                 width: 185px;
                 height: 278px;
