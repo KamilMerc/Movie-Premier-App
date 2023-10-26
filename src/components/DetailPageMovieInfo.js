@@ -5,9 +5,13 @@ const DetailPageMovieInfo = (props) => {
     //Change minutes to hours 
     const minutesToHours = () => {
         if(props.runtime) {
-            const hours = Math.floor(props.runtime/60);
-            const minutes = props.runtime % 60;
-            return `Runtime: ${hours}h ${minutes > 0 ? `${minutes}m` : ""}`
+            if(props.runtime >= 60) {
+                const hours = Math.floor(props.runtime/60);
+                const minutes = props.runtime % 60;
+                return `Runtime: ${hours}h ${minutes > 0 ? `${minutes}m` : ""}`
+            } else {
+                return `Runtime: ${props.runtime}m`
+            }
         } else {
             return "Runtime: None"
         }
