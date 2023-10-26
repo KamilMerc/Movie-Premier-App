@@ -13,7 +13,7 @@
         flex-wrap: wrap;
 
         .actorCard {
-            margin-right: 1rem;
+            margin-right: 1.1rem;
             .actorPhoto {
                 width: 185px;
                 height: 278px;
@@ -21,11 +21,13 @@
             }
 
             .name  {
+                width: 185px;
                 margin: .5rem 0 0 0;
                 font-size: 1rem;
             }
 
             .character {
+                width: 185px;
                 margin: .3rem 0 1.5rem 0;
             }
         }
