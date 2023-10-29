@@ -26,15 +26,17 @@ const DetailPageVideo = (props) => {
             {trailer ? 
                 <>
                     <p className="trailer-header">Trailer:</p>
-                    <YouTube
-                        videoId={trailer.key}
-                        className="trailer"
-                        title="Oficial Trailer"
-                        opts={{
-                            width: "100%",
-                            height: "100%"
-                        }}
-                    />
+                    <div className="video-container">
+                        <YouTube
+                            videoId={trailer.key}
+                            className="trailer"
+                            title="Oficial Trailer"
+                            opts={{
+                                width: "100%",
+                                height: "100%"
+                            }}
+                        />
+                    </div>
                 </>
                 :
                 <p className="trailer-header">Trailer: Not found</p>
