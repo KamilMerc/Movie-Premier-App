@@ -33,7 +33,10 @@ const DetailPageVideo = (props) => {
                             title="Oficial Trailer"
                             opts={{
                                 width: "100%",
-                                height: "100%"
+                                height: "100%",
+                                playerVars: {
+                                    controls: 1
+                                }
                             }}
                         />
                     </div>
