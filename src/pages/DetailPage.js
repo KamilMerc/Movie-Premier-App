@@ -82,10 +82,7 @@ function DetailPage() {
                 director={director}
                 writer={writer}
                 id={id}
-            />
-
-            <DetailPageProviders
-                id={id}
+                DetailPageProviders={<DetailPageProviders id={id}/>}
             />
 
             <div className="casts">

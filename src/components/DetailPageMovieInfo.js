@@ -62,6 +62,8 @@ const DetailPageMovieInfo = (props) => {
 
                     <h2 className="ovr">Overview</h2>
                     {props.movie.overview ? <p className="overview">{props.movie.overview}</p> : <p className="overview">No overview found</p>}
+        
+                    {props.DetailPageProviders}
                     
                 </div>
             </div>
