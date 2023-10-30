@@ -10,7 +10,8 @@ const Header = (props) => {
     props.setNextPage(2)
     props.setPrevPage(0)
     //Passing to fetchMovies function URL with 'with_genre' attribute that allows get movies only with particular genre
-    props.fetchMovies(`${props.URL}&with_genres=${genre}`)
+    props.fetchMovies(`${props.URL}&with_genres=${genre}
+    `)
     window.scrollTo({top: 0, behavior: 'smooth'});
   }
   
