@@ -66,6 +66,7 @@ function DetailPage() {
         <div className="detail-page-wrapper">
             <DetailPageBackdrop
                 backdropImage={backdropImage}
+                backdrop={backdrop}
             />
 
             {/* Call DetailPageMovieInfo component and pass props to it */}

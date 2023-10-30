@@ -19,8 +19,6 @@ const DetailPageVideo = (props) => {
         getVideos()
     },[])
 
-    console.log(trailer)
-
     return (
         <div className="trailer-container">
             {trailer ? 

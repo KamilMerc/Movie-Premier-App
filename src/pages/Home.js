@@ -7,7 +7,7 @@ import PaginationPageInfo from "../components/PaginationPageInfo";
 
 function Home() {
   //API URL
-  const URL = `${process.env.REACT_APP_BASE_URL}now_playing${process.env.REACT_APP_API_KEY}`;
+  const URL = `${process.env.REACT_APP_BASE_URL}now_playing${process.env.REACT_APP_API_KEY}&page=25`;
 
   //Pagination buttons
   const btnPrev = document.querySelector('.prev');
