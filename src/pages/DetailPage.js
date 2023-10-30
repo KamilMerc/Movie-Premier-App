@@ -8,6 +8,7 @@ import DetailPageProviders from "../components/DetailPageProviders";
 import DetailPageVideo from "../components/DetailPageVideo";
 
 function DetailPage() {
+
     const { id } = useParams();
     const [movie, setMovie] = useState([]);
     const [backdrop, setBackdrop] = useState([])
@@ -25,6 +26,7 @@ function DetailPage() {
 
     const backdropImage = `${process.env.REACT_APP_BASE_IMAGE_URL}original/${backdrop}`
     const posterImage = `${process.env.REACT_APP_BASE_IMAGE_URL}original/${poster}`
+
 
     async function getMovie() {
         await fetch(URL)

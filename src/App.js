@@ -4,18 +4,21 @@ import Home from "./pages/Home";
 import Error from "./pages/Error";
 import DetailPage from "./pages/DetailPage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
-
+import  ScrollToTop  from "./components/ScrollToTop"
 
 
 function App() {
+
   return (
     <div className="App">
      <Router>
-        <Routes>
+      <ScrollToTop>
+      <Routes>
           <Route index element={<Home/>}></Route>
           <Route path="movie/:id" element={<DetailPage/>}></Route>
           <Route path="/*" element={<Error/>}></Route>
         </Routes>
+      </ScrollToTop>
      </Router>
     </div>
   );
