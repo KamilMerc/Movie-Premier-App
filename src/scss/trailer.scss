@@ -1,6 +1,6 @@
 .trailer-container {
     width: 100%;
-    margin: 2rem 0 3rem 0;
+    margin: 2rem 18% 3rem 18%;
 
     .trailer-header {
         text-align: left;
@@ -17,4 +17,46 @@
         }
     }
     
+}
+
+@media(max-width: 1910px) {
+    .trailer-container {
+        margin: 2rem 15% 3rem 15%;
+    }
+}
+
+@media(max-width: 1700px) {
+    .trailer-container {
+        margin: 2rem 10% 3rem 10%;
+    }
+}
+
+@media(max-width: 1600px) {
+    .trailer-container {
+        .video-container {
+            height: 550px;
+        }
+    }
+}
+
+@media(max-width: 1500px) {
+    .trailer-container {
+        margin: 2rem 4% 3rem 4%;
+    }
+}
+
+@media(max-width: 1000px) {
+    .trailer-container {
+        .video-container {
+            height: 450px;
+        }
+    }
+}
+
+@media(max-width: 800px) {
+    .trailer-container {
+        .video-container {
+            height: 400px;
+        }
+    }
 }
