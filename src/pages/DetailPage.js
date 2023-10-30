@@ -87,7 +87,7 @@ function DetailPage() {
             />
 
             <div className="casts">
-                <h4 className="cast">Lead Cast:</h4>
+                {actors.length !== 0 ? <h4 className="cast">Lead Cast:</h4> : <h4 className="cast">Lead Cast: Not found</h4>}
                 <div className="actors">
                     {renderCast()}
                 </div>
