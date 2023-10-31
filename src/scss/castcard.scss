@@ -1,5 +1,5 @@
 .casts {
-    margin: 3.5rem 18% 0 18%;
+    margin: 1.75rem 18% 0 18%;
 
     .cast {
         text-align: left;
@@ -38,36 +38,140 @@
 
 @media(max-width: 1910px) {
     .casts {
-        margin: 3.5rem 15% 0 15%;
+        margin-left: 15%;
+        margin-right: 15%;
     }
 }
 
 @media(max-width: 1800px) {
     .casts {
-        margin: 3.5rem 12% 0 12%;
+        margin-left: 12%;
+        margin-right: 12%;
     }
 }
 
 @media(max-width: 1700px) {
     .casts {
-        margin: 3.5rem 10% 0 10%;
+        margin-left: 10%;
+        margin-right: 10%;
     }
 }
 
 @media(max-width: 1600px) {
     .casts {
-        margin: 3.5rem 7% 0 7%;
+        margin-left: 7%;
+        margin-right: 7%;
     }
 }
 
 @media(max-width: 1500px) {
     .casts {
-        margin: 3.5rem 4% 0 4%;
+        margin-left: 4%;
+        margin-right: 4%;
     }
 }
 
 @media(max-width: 1400px) {
     .casts {
-        margin: 3.5rem 1% 0 1%;
+        margin-left: 1%;
+        margin-right: 1%;
+    }
+}
+
+@media(max-width: 1100px) {
+    .casts {
+        .cast {
+            text-align: center;
+        }
+    }
+}
+
+@media(max-width: 450px) and (min-width: 400px) {
+    .casts {
+        margin-top: .7rem;
+
+        .cast {
+            font-size: 2rem;
+        }
+
+        .actors { 
+            .actorCard {    
+                .actorPhoto {
+                    width: 183px;
+                    height: 275px;
+                }
+    
+                .name  {
+                    width: 183px;
+                }
+    
+                .character {
+                    width: 183px;
+                } 
+            }
+        }         
+    }
+}
+
+@media(max-width: 400px) and (min-width: 389px) {
+    .casts {
+        .actors { 
+            .actorCard {      
+                .actorPhoto {
+                    width: 170px;
+                    height: 249px;
+                }
+    
+                .name  {
+                    width: 170px;
+                }
+    
+                .character {
+                    width: 170px;
+                } 
+            }
+        } 
+    }
+}
+
+@media(max-width: 388px) and (min-width: 374px) {
+    .casts {
+        .actors { 
+            .actorCard {        
+                .actorPhoto {
+                    width: 160px;
+                    height: 239px;
+                }
+    
+                .name  {
+                    width: 160px;
+                }
+    
+                .character {
+                    width: 160px;
+                } 
+            }
+        } 
+    }
+}
+
+@media(max-width: 373px) and (min-width: 350px) {
+    .casts {
+        .actors { 
+            .actorCard {  
+                .actorPhoto {
+                    width: 155px;
+                    height: 234px;
+                }
+    
+                .name  {
+                    width: 155px;
+                }
+    
+                .character {
+                    width: 155px;
+                } 
+            }
+        } 
     }
 }

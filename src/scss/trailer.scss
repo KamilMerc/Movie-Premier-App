@@ -21,13 +21,15 @@
 
 @media(max-width: 1910px) {
     .trailer-container {
-        margin: 2rem 15% 3rem 15%;
+        margin-left: 15%;
+        margin-right: 15%;
     }
 }
 
 @media(max-width: 1700px) {
     .trailer-container {
-        margin: 2rem 10% 3rem 10%;
+        margin-left: 10%;
+        margin-right: 10%;
     }
 }
 
@@ -41,7 +43,16 @@
 
 @media(max-width: 1500px) {
     .trailer-container {
-        margin: 2rem 4% 3rem 4%;
+        margin-left: 4%;
+        margin-right: 4%;
+    }
+}
+
+@media(max-width: 1100px) {
+    .trailer-container {
+        .trailer-header {
+            text-align: center;
+        }
     }
 }
 
@@ -57,6 +68,28 @@
     .trailer-container {
         .video-container {
             height: 400px;
+        }
+    }
+}
+
+@media(max-width: 550px) {
+    .trailer-container {
+        .video-container {
+            height: 300px;
+        }
+    }
+}
+
+@media(max-width: 420px) {
+    .trailer-container {
+        margin-top: 1rem;
+        .trailer-header {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .video-container {
+            height: 200px;
         }
     }
 }
