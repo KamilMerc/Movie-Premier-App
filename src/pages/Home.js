@@ -39,7 +39,7 @@ function Home() {
   }
 
   //API URL
-  const URL = `${process.env.REACT_APP_BASE_URL}${process.env.REACT_APP_API_KEY}&primary_release_date.gte=${queryParamBack()}&primary_release_date.lte=${queryParamForward()}`;
+  const URL = `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_API_KEY}&primary_release_date.gte=${queryParamBack()}&primary_release_date.lte=${queryParamForward()}`;
 
   //Pagination buttons
   const btnPrev = document.querySelector('.prev');
