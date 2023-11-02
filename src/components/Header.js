@@ -1,20 +1,28 @@
 //Imports
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useActionData } from "react-router-dom";
 
 const Header = (props) => {
 
+const [genre, setGenre] = useState("")
+const [filter, setFilter] = useState("")
+
   //Fetch movies by selected genre
-  const genreSelection = (value, option) => {
+  const fetchWithFilters = () => {
     // Reset values of current, next and prev page to start from page 1 when you change genre
     props.setCurrentPage(1)
     props.setNextPage(2)
     props.setPrevPage(0)
     //Passing to fetchMovies function URL with 'with_genre' attribute that allows get movies only with particular genre
-    props.fetchMovies(`${props.URL}${option}${value}
+    console.log(`${props.URL}${genre}${filter}`)
+    props.fetchMovies(`${props.URL}${genre}${filter}
     `)
     window.scrollTo({top: 0, behavior: 'smooth'});
   }
-  
+
+  useEffect(() => {
+    fetchWithFilters()
+  },[genre,filter])
 
     return (
         <header>
@@ -27,7 +35,7 @@ const Header = (props) => {
               id="genres"
               name="genres"
               onChange={(e) => {
-                genreSelection(e.target.value, "&with_genres=")
+                setGenre(`&with_genres=${e.target.value}`)
               }}
             >
               {/* Genre options */}
@@ -59,7 +67,7 @@ const Header = (props) => {
               id="sortby"
               name="sortby"
               onChange={(e) => {
-                genreSelection(e.target.value, "&sort_by=")
+                setFilter(`&sort_by=${e.target.value}`)
               }}
             >
               {/* sortby options */}
