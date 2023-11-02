@@ -50,6 +50,7 @@
 
           select {
             margin-top: 10px;
+            text-align: center;
           }
         }
       }
@@ -58,27 +59,14 @@
 
   @media(max-width: 850px) {
     .header-wrapper {
+      flex-wrap: wrap;
+
       h1 {
         flex-basis: 100%;
       }
 
-      flex-wrap: wrap;
       form {
         width: 100%;
-      }
-    }
-  }
-
-  @media(max-width: 720px) {
-    .header-wrapper {
-      flex-wrap: wrap;
-      
-      form {
-        .filters-container {
-          select {
-            text-align: center;
-          }
-        }
       }
     }
   }
