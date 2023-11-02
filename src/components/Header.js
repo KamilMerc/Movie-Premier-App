@@ -19,7 +19,7 @@ const Header = (props) => {
     return (
         <header>
         <div className="header-wrapper center">
-          <h1>Movie Premier App</h1>
+          <h1>Movie Discover App</h1>
           <form>
             {/* Genre selection */}
             <label htmlFor="genres">Genre:</label>
