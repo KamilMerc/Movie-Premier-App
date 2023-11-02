@@ -13,7 +13,6 @@ const [filter, setFilter] = useState("")
     props.setNextPage(2)
     props.setPrevPage(0)
     //Passing to fetchMovies function URL with 'with_genre' attribute that allows get movies only with particular genre
-    console.log(`${props.URL}${genre}${filter}`)
     props.fetchMovies(`${props.URL}${genre}${filter}
     `)
     window.scrollTo({top: 0, behavior: 'smooth'});
