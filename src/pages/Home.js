@@ -40,7 +40,6 @@ function Home() {
 
   //API URL
   const URL = `https://api.themoviedb.org/3/discover/movie${process.env.REACT_APP_API_KEY}&primary_release_date.gte=${queryParamBack()}&primary_release_date.lte=${queryParamForward()}`;
-  console.log(URL)
 
   //Pagination buttons
   const btnPrev = document.querySelector('.prev');
