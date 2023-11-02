@@ -4,24 +4,19 @@
     justify-content: space-around;
     padding: 15px;
     background-color: #0F1014;
-    margin-top: 110px;
+    margin-top: 100px;
     border-radius: 20px;
 }
 
-@media(min-width: 720px) and (max-width: 778px) {
-    .container {
-        margin-top: 140px;
-    }
+@media(max-width: 850px) {
+  .container {
+    margin-top: 175px;
   }
+}
 
-  @media(max-width: 720px) {
-    .container {
-       margin-top: 170px; 
-    }
-  }
 
-  @media(max-width: 450px) and (min-width: 0px) {
-    .container {
-      margin-top: 125px;
-    }
+@media(max-width: 450px) and (min-width: 0px) {
+  .container {
+    margin-top: 125px;
   }
+}
