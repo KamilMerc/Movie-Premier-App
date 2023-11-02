@@ -6,9 +6,41 @@ import Header from "../components/Header";
 import PaginationPageInfo from "../components/PaginationPageInfo";
 
 function Home() {
+
+  //Time range variables
+  const year = new Date().getFullYear();
+  const month = new Date().getMonth() + 1;
+  const range = 1;
+
+// Max range date
+  const queryParamBack = () => {
+    if(month-range < 10 && month-range >= 1) {
+      return `${year}-0${month-range}-01`
+    }
+    else if(month-range < 1) {
+      return `${year-1}-12-01`
+    }
+    else if(month-range >= 10) {
+      return `${year}-${month-range}-01`
+    }
+  }
+
+  // Min range date
+  const queryParamForward = () => {
+    if(month+range < 10) {
+      return `${year}-0${month+range}-01`
+    }
+    else if(month+range > 12) {
+      return `${year+1}-01-01`
+    }
+    else if(month+range >= 10 && month+range <= 12) {
+      return `${year}-${month+range}-01`
+    }
+  }
+
   //API URL
-  // const URL = `${process.env.REACT_APP_BASE_URL}now_playing${process.env.REACT_APP_API_KEY}`;
-  const URL = `https://api.themoviedb.org/3/discover/movie${process.env.REACT_APP_API_KEY}`;
+  const URL = `https://api.themoviedb.org/3/discover/movie${process.env.REACT_APP_API_KEY}&primary_release_date.gte=${queryParamBack()}&primary_release_date.lte=${queryParamForward()}`;
+  console.log(URL)
 
   //Pagination buttons
   const btnPrev = document.querySelector('.prev');

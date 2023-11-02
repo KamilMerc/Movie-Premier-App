@@ -4,13 +4,13 @@ import React from "react";
 const Header = (props) => {
 
   //Fetch movies by selected genre
-  const genreSelection = (genre) => {
+  const genreSelection = (value, option) => {
     // Reset values of current, next and prev page to start from page 1 when you change genre
     props.setCurrentPage(1)
     props.setNextPage(2)
     props.setPrevPage(0)
     //Passing to fetchMovies function URL with 'with_genre' attribute that allows get movies only with particular genre
-    props.fetchMovies(`${props.URL}&with_genres=${genre}
+    props.fetchMovies(`${props.URL}${option}${value}
     `)
     window.scrollTo({top: 0, behavior: 'smooth'});
   }
@@ -19,7 +19,7 @@ const Header = (props) => {
     return (
         <header>
         <div className="header-wrapper center">
-          <h1>Movie Discover App</h1>
+          <h1>Movie Premier App</h1>
           <form>
             {/* Genre selection */}
             <label htmlFor="genres">Genre:</label>
@@ -27,7 +27,7 @@ const Header = (props) => {
               id="genres"
               name="genres"
               onChange={(e) => {
-                genreSelection(e.target.value)
+                genreSelection(e.target.value, "&with_genres=")
               }}
             >
               {/* Genre options */}
@@ -51,6 +51,24 @@ const Header = (props) => {
               <option value="53">Thriller</option>
               <option value="10752">War</option>
               <option value="37">Western</option>
+            </select>
+
+
+            <label htmlFor="sortby">Sort by:</label>
+            <select 
+              id="sortby"
+              name="sortby"
+              onChange={(e) => {
+                genreSelection(e.target.value, "&sort_by=")
+              }}
+            >
+              {/* sortby options */}
+              <option value="popularity.desc">Popularity DESC</option>
+              <option value="popularity.asc">Popularity ASC</option>
+              <option value="vote_average.desc">Vote average DESC</option>
+              <option value="vote_average.asc">Vote average ASC</option>
+              <option value="primary_release_date.desc">Release date DESC</option>
+              <option value="primary_release_date.asc">Release date ASC</option>
             </select>
           </form>
 
