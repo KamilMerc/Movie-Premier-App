@@ -1,7 +1,10 @@
 //Imports
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
+import { PageContext } from "../App";
 
 const Header = (props) => {
+
+const {setCurrentPage, setNextPage, setPrevPage, fetchMovies} = useContext(PageContext)
 
 const [genre, setGenre] = useState("")
 const [filter, setFilter] = useState("")
@@ -9,11 +12,11 @@ const [filter, setFilter] = useState("")
   //Fetch movies by selected genre
   const fetchWithFilters = () => {
     // Reset values of current, next and prev page to start from page 1 when you change genre
-    props.setCurrentPage(1)
-    props.setNextPage(2)
-    props.setPrevPage(0)
+    setCurrentPage(1)
+    setNextPage(2)
+    setPrevPage(0)
     //Passing to fetchMovies function URL with 'with_genre' attribute that allows get movies only with particular genre
-    props.fetchMovies(`${props.URL}${genre}${filter}
+    fetchMovies(`${props.URL}${genre}${filter}
     `)
     window.scrollTo({top: 0, behavior: 'smooth'});
   }

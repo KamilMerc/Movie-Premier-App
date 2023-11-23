@@ -1,23 +1,30 @@
 //Imports
 import React from "react";
-import { useEffect } from "react";
+import { useEffect, useContext } from "react";
+import { PageContext } from "../App";
 
-const Pagination = (props) => {
+const Pagination = () => {
+
+    //Pagination buttons
+  const btnPrev = document.querySelector('.prev');
+  const btnNext = document.querySelector('.next');
   
+  const {currentPage, nextPage, prevPage, lastUrl, totalPagesNumber, setCurrentPage, setNextPage, setPrevPage, fetchMovies} = useContext(PageContext)
+
   //Add or remove 'disabled' class to pagination buttons
   const disableBtns = () => {
-    if(props.btnNext && props.btnPrev) {
-      if(props.currentPage <= 1) {
-        props.btnPrev.classList.add('disabled');
-        props.btnNext.classList.remove('disabled');
+    if(btnNext && btnPrev) {
+      if(currentPage <= 1) {
+        btnPrev.classList.add('disabled');
+        btnNext.classList.remove('disabled');
       }
-      else if(props.currentPage >= props.totalPagesNumber) {
-        props.btnPrev.classList.remove('disabled');
-        props.btnNext.classList.add('disabled');
+      else if(currentPage >= totalPagesNumber) {
+        btnPrev.classList.remove('disabled');
+        btnNext.classList.add('disabled');
       }
       else {
-        props.btnPrev.classList.remove('disabled');
-        props.btnNext.classList.remove('disabled');
+        btnPrev.classList.remove('disabled');
+        btnNext.classList.remove('disabled');
       }
     }
   }
@@ -27,18 +34,19 @@ const Pagination = (props) => {
     disableBtns();
   }) 
 
-
+  
   //Pagination to the next page
   const goToNextPage = () => {
-    if (props.nextPage <= props.totalPagesNumber) {
-      let nextPageTmp = props.nextPage + 1;
-      let currnetPageTmp = props.currentPage + 1;
-      let prevPageTmp = props.prevPage + 1;
-      props.setCurrentPage(currnetPageTmp);
-      props.setPrevPage(prevPageTmp);
-      props.setNextPage(nextPageTmp);
-      pageSelection(props.nextPage);
+    if (nextPage <= totalPagesNumber) {
+      let nextPageTmp = nextPage + 1;
+      let currnetPageTmp = currentPage + 1;
+      let prevPageTmp = prevPage + 1;
+      setCurrentPage(currnetPageTmp);
+      setPrevPage(prevPageTmp);
+      setNextPage(nextPageTmp);
+      pageSelection(nextPage);
       window.scrollTo({top: 0, behavior: 'smooth'});
+      console.log(currentPage,currnetPageTmp,nextPage,nextPageTmp)
     }
     
   };
@@ -46,35 +54,37 @@ const Pagination = (props) => {
 
   //Pagination to the previous page
   const goToPrevPage = () => {
-    if (props.prevPage > 0) {
-      let nextPageTmp = props.nextPage - 1;
-      let currnetPageTmp = props.currentPage - 1;
-      let prevPageTmp = props.prevPage - 1;
-      props.setCurrentPage(currnetPageTmp);
-      props.setPrevPage(prevPageTmp);
-      props.setNextPage(nextPageTmp);
-      pageSelection(props.prevPage);
+    if (prevPage > 0) {
+      let nextPageTmp = nextPage - 1;
+      let currnetPageTmp = currentPage - 1;
+      let prevPageTmp = prevPage - 1;
+      setCurrentPage(currnetPageTmp);
+      setPrevPage(prevPageTmp);
+      setNextPage(nextPageTmp);
+      pageSelection(prevPage);
       window.scrollTo({top: 0, behavior: 'smooth'});
+      console.log(currentPage,currnetPageTmp,nextPage,nextPageTmp)
     }
   };
 
 
   //Adding 'page' attribute and value from goToPrevPage or goToNextPage function to the url variable that goes to fetchMovies function
   const pageSelection = (page) => {
-    let splitUrl = props.lastUrl.split("?");
+    let splitUrl = lastUrl.split("?");
     let queryParameter = splitUrl[1].split("&");
     let key = queryParameter[queryParameter.length - 1].split("=");
     if (key[0] !== "page") {
-      let url = props.lastUrl + `&page=${page}`;
-
-      props.fetchMovies(url);
+      let url = lastUrl + `&page=${page}`;
+      console.log(url)
+      fetchMovies(url);
     } else {
       key[1] = page.toString();
       let a = key.join("=");
       queryParameter[queryParameter.length - 1] = a;
       let b = queryParameter.join("&");
       let url = splitUrl[0] + "?" + b;
-      props.fetchMovies(url);
+      console.log(url)
+      fetchMovies(url);
     }
   };
 
@@ -84,11 +94,12 @@ const Pagination = (props) => {
         <button onClick={goToPrevPage} className="prev">
           prev
         </button>
+
         {/* Calling goToNextPage function */}
         <button onClick={goToNextPage} className="next">
           next
         </button>
-      </div>
+    </div>
   )
 }
 

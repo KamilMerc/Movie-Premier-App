@@ -1,13 +1,13 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { useParams } from 'react-router-dom'
+import { useParams, useLocation } from 'react-router-dom'
 import DetailPageMovieInfo from "../components/DetailPageMovieInfo";
 import DetailPageBackdrop from "../components/DetailPageBackdrop";
 import DetailPageCast from "../components/DetailPageCast";
 import DetailPageProviders from "../components/DetailPageProviders";
 import DetailPageVideo from "../components/DetailPageVideo";
 
-function DetailPage() {
+function DetailPage(props) {
 
     const { id } = useParams();
     const [movie, setMovie] = useState([]);
@@ -27,7 +27,8 @@ function DetailPage() {
     const backdropImage = `${process.env.REACT_APP_BASE_IMAGE_URL}original/${backdrop}`
     const posterImage = `${process.env.REACT_APP_BASE_IMAGE_URL}original/${poster}`
 
-
+    const location = useLocation()
+    
     async function getMovie() {
         await fetch(URL)
             .then((res) => res.json())
@@ -69,6 +70,10 @@ function DetailPage() {
             <DetailPageBackdrop
                 backdropImage={backdropImage}
                 backdrop={backdrop}
+                currentPage = {location.state.currentPage}
+                url = {location.state.url}
+                // fetchMovies = {props.fetchMovies}
+                // setCurrentPage = {props.setCurrentPage}
             />
 
             {/* Call DetailPageMovieInfo component and pass props to it */}

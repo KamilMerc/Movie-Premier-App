@@ -1,25 +1,32 @@
 //Imports
 import "./scss/App.scss";
+import React, {createContext, useState} from "react";
 import Home from "./pages/Home";
 import Error from "./pages/Error";
 import DetailPage from "./pages/DetailPage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
-import  ScrollToTop  from "./components/ScrollToTop"
+import  ScrollToTop  from "./components/ScrollToTop" 
 
+ //Context Api
+ export const PageContext = createContext()
 
 function App() {
+  const [currentPage, setCurrentPage] = useState();
 
+  console.log(currentPage)
   return (
     <div className="App">
-     <Router>
-      <ScrollToTop>
-      <Routes>
-          <Route index element={<Home/>}></Route>
-          <Route path="movie/:id" element={<DetailPage/>}></Route>
-          <Route path="/*" element={<Error/>}></Route>
-        </Routes>
-      </ScrollToTop>
-     </Router>
+      <PageContext.Provider value={{currentPage, setCurrentPage}}>
+        <Router>
+            <ScrollToTop>
+              <Routes>
+                <Route index element={<Home/>}></Route>
+                <Route path="movie/:id" element={<DetailPage/>}></Route>
+                <Route path="/*" element={<Error/>}></Route>
+              </Routes>
+            </ScrollToTop>
+          </Router>
+      </PageContext.Provider>
     </div>
   );
 }

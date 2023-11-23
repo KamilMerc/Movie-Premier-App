@@ -2,11 +2,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 
-const MovieCard = ({movie}) => {
-
+const MovieCard = ({movie,currentPage,url,fetchMovies}) => {
     return (
         //Creating moviecard containers. Each ones contains one fetched movie passing from renderMovies function
-    <Link to={`/movie/${movie.id}`} style={{textDecoration:"none",color:"white"}}>
+    <Link to={`/movie/${movie.id}`} state={{currentPage: currentPage, url: url}} style={{textDecoration:"none",color:"white"}}>
         <div className='moviecard'>
             {/* Movie card contains movie poster (if exists) and movie title */}
             {movie.poster_path ? <img className='moviecover' src={`${process.env.REACT_APP_BASE_IMAGE_URL}w300${movie.poster_path}`} alt=""/> : <div className='movie-placeholder'>No image found</div>}

@@ -1,11 +1,22 @@
-import React from "react";
-import { useEffect, useState } from "react";
+import React, { useState, useContext } from "react";
+import { useEffect } from "react";
 import MovieCard from "../components/MovieCard";
 import Pagination from "../components/Pagination";
 import Header from "../components/Header";
 import PaginationPageInfo from "../components/PaginationPageInfo";
+import { PageContext } from "../App";
+
 
 function Home() {
+ 
+  const {currentPage, setCurrentPage} = useContext(PageContext)
+
+    //States
+  const [movies, setMovies] = useState([]);
+  const [prevPage, setPrevPage] = useState(currentPage-1);
+  const [nextPage, setNextPage] = useState(currentPage+1);
+  const [totalPagesNumber, setTotalPagesNumber] = useState([]);
+  const [lastUrl, setLastUrl] = useState("");
 
   //Time range variables
   const year = new Date().getFullYear();
@@ -38,20 +49,12 @@ function Home() {
     }
   }
 
-  //API URL
-  const URL = `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_API_KEY}&primary_release_date.gte=${queryParamBack()}&primary_release_date.lte=${queryParamForward()}`;
 
-  //Pagination buttons
-  const btnPrev = document.querySelector('.prev');
-  const btnNext = document.querySelector('.next');
+//   //API URL
+  const URL = `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_API_KEY}&primary_release_date.gte=${queryParamBack()}&primary_release_date.lte=${queryParamForward()}&page=${currentPage}`;
 
-  //States
-  const [movies, setMovies] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [prevPage, setPrevPage] = useState(currentPage-1);
-  const [nextPage, setNextPage] = useState(currentPage+1);
-  const [totalPagesNumber, setTotalPagesNumber] = useState([]);
-  const [lastUrl, setLastUrl] = useState("");
+  console.log(URL)
+
 
   
   //Fetch data from API
@@ -65,6 +68,7 @@ function Home() {
         if (data.results.length !== 0) {
           setMovies(data.results);
           setLastUrl(url);
+          setCurrentPage(data.page)
           setTotalPagesNumber(data.total_pages);
         }
       })
@@ -77,42 +81,26 @@ function Home() {
   },[]);
 
 
+  
   //Passing fetched movies to 'MovieCard' component
   const renderMovies = () => {
-    return movies.map((movie) => <MovieCard key={movie.id} movie={movie} />);
+    return movies.map((movie) => <MovieCard key={movie.id} movie={movie} currentPage={currentPage} url={URL}/>);
   }
 
   return (
     <div className="App">
-      <Header
-        URL={URL}
-        setCurrentPage={setCurrentPage}
-        setNextPage={setNextPage}
-        setPrevPage={setPrevPage}
-        fetchMovies={fetchMovies}
-      />
+      <PageContext.Provider value={{movies, setMovies, currentPage, setCurrentPage, prevPage, setPrevPage, nextPage, setNextPage, totalPagesNumber, setTotalPagesNumber, lastUrl, setLastUrl, fetchMovies}}>
+        <Header
+          URL = {URL}
+        />
 
-      {/* Calling renderMovies function that places movie cards from 'MovieCard' component into 'container' div*/}
-      <div className="container center">{renderMovies()}</div>
+        {/* Calling renderMovies function that places movie cards from 'MovieCard' component into 'container' div*/}
+        <div className="container center">{renderMovies()}</div>
 
-      <PaginationPageInfo
-        currentPage={currentPage}
-        totalPagesNumber={totalPagesNumber}
-      />
+        <PaginationPageInfo/>
 
-      <Pagination 
-        btnNext={btnNext}
-        btnPrev={btnPrev}
-        currentPage={currentPage}
-        nextPage={nextPage}
-        prevPage={prevPage}
-        lastUrl={lastUrl}
-        totalPagesNumber={totalPagesNumber}
-        setCurrentPage={setCurrentPage}
-        setNextPage={setNextPage}
-        setPrevPage={setPrevPage}
-        fetchMovies={fetchMovies}
-      />
+        <Pagination/>
+      </PageContext.Provider>
     </div>
   );
 }
