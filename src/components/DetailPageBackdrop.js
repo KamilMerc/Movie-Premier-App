@@ -20,6 +20,8 @@ const DetailPageBackdrop = (props) => {
             <img className="backarrow" src={arrow} alt="backarrow" onClick={
                 goPrevious
             }/>
+
+            <p className="sign">Sign In</p>
         </>
     )
 }

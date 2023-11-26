@@ -28,7 +28,10 @@ const [filter, setFilter] = useState("")
     return (
         <header>
         <div className="header-wrapper center">
-          <h1>Movie Premier App</h1>
+          <div className="signWrapper">
+            <h1>Movie Premier App</h1>
+            <p>Sign In</p>
+          </div>
           <form>
             {/* Genre selection */}
             <div className="filters-container">

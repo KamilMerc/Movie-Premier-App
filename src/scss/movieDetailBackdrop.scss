@@ -28,4 +28,13 @@
             transform: scale(1);
         }
     }
+
+    .sign {
+        font-weight: bold;
+        font-size: 1.4rem;
+        position: absolute;
+        right: 5%;
+        top: 1%;
+        cursor: pointer;
+    }
 }

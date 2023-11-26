@@ -11,9 +11,18 @@
     background-color: #090A0E;
     z-index: 1;
 
-    h1 {
-      color: red;
+    .signWrapper{
+      margin-bottom: 30px;
+      h1 {
+        color: red;
+      }
+      p {
+        font-weight: bold;
+        font-size: 1.1rem;
+        cursor: pointer;
+      }
     }
+
 
     form {
       width: 450px;
@@ -41,6 +50,15 @@
 
   @media(max-width: 1065px) {
     .header-wrapper {
+
+      .signWrapper {
+        margin-bottom: 10px;
+
+        h1 {
+          margin-bottom: 30px;
+        }
+      }
+
       form {
         width: 310px;
 
@@ -61,7 +79,7 @@
     .header-wrapper {
       flex-wrap: wrap;
 
-      h1 {
+      .signWrapper {
         flex-basis: 100%;
       }
 
@@ -73,8 +91,11 @@
 
   @media(max-width: 500px) {
     .header-wrapper {
-      h1 {
-        margin-bottom: 30px;
+
+      .signWrapper {
+        h1 {
+          margin-bottom: 20px;
+        }
       }
 
       form {
@@ -89,8 +110,11 @@
 
   @media(max-width: 450px) and (min-width: 0px) {
     .header-wrapper {
-      h1 {
-        margin-top: 5px;
+
+      .signWrapper {
+        h1 {
+          margin-top: 5px;
+        }
       }
 
       form {
