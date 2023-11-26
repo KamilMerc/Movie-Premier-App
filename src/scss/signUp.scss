@@ -24,6 +24,17 @@
             margin-bottom: 2rem;
             font-size: 2rem;
         }
+
+        .error {
+            font-weight: bold;
+            font-size: 1.1rem;
+            width: 400px;
+            padding: 10px 0 10px 20px;
+            border-radius: 5px;
+            text-align: left;
+            background-color: rgba($color: red, $alpha: .4);
+            
+        }
     
         .signUpForm {
             width: 80%;
@@ -36,6 +47,7 @@
                 .signUpInput {
                     width: 400px;
                     height: 2rem;
+                    padding-left: 20px;
                     border-radius: 5px;
                     border: 2px solid red;
 
@@ -86,6 +98,10 @@
     .containermain {
         .formContainer {
             width: 340px;
+
+            .error {
+                width: 300px;    
+            }
         
             .signUpForm {
                 .formGroup {

@@ -7,6 +7,7 @@ import DetailPage from "./pages/DetailPage";
 import SignUp from "./components/SignUp";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import  ScrollToTop  from "./components/ScrollToTop" 
+import { AuthProvider } from "./contexts/AuthContext";
 
 
  //Context Api
@@ -18,18 +19,20 @@ function App() {
   console.log(currentPage)
   return (
     <div className="App">
-      <PageContext.Provider value={{currentPage, setCurrentPage}}>
-        <Router>
-            <ScrollToTop>
-              <Routes>
-                <Route index element={<Home/>}></Route>
-                <Route path="movie/:id" element={<DetailPage/>}></Route>
-                <Route path="/*" element={<Error/>}></Route>
-                <Route path="/signup" element={<SignUp/>}></Route>
-              </Routes>
-            </ScrollToTop>
-          </Router>
-      </PageContext.Provider>
+      <AuthProvider>
+        <PageContext.Provider value={{currentPage, setCurrentPage}}>
+          <Router>
+              <ScrollToTop>
+                <Routes>
+                  <Route index element={<Home/>}></Route>
+                  <Route path="movie/:id" element={<DetailPage/>}></Route>
+                  <Route path="/*" element={<Error/>}></Route>
+                  <Route path="/signup" element={<SignUp/>}></Route>
+                </Routes>
+              </ScrollToTop>
+            </Router>
+        </PageContext.Provider>
+      </AuthProvider>
     </div>
   );
 }

@@ -1,16 +1,41 @@
-import React,  { useRef } from "react";
+import React,  { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
 
 const SignUp = () => {
 
     const navigate = useNavigate()
 
+    //useRef allows you to persist values between renders. It can be used to store a mutable value that does not cause a re-render when updated
     const emailRef = useRef()
     const passwordRef  = useRef()
     const passwordConfirmRef = useRef()
 
+    const { signup, currentUser } = useAuth()
+
+    const [error, setError] = useState("")
+    const [loading, setLoading] = useState(false) //it is used to prevent multiple click sign up button when user is creating (preventing error occured)
+
     const goBack = () => {
         navigate(-1)
+    }
+
+    const submitForm = async(e) => {
+        e.preventDefault()
+
+        if(passwordRef.current.value !== passwordConfirmRef.current.value) {
+            return setError("Passwords don't match")
+        }
+
+        try {
+            setError("")
+            setLoading(true)
+            await signup(emailRef.current.value, passwordRef.current.value)
+        }
+        catch {
+            setError("Failed to create an account")
+        }
+        setLoading(false)
     }
 
     return(
@@ -20,7 +45,8 @@ const SignUp = () => {
             
             <div className="formContainer">
                 <h2>Sign Up</h2>
-                <form className="signUpForm">
+                {error && <p className="error">{error}</p>}
+                <form onSubmit={submitForm} className="signUpForm">
                     <div id="email" className="formGroup">
                         <label className="signUpLabel" htmlFor="email">Email</label>
                         <input className="signUpInput" name="email" type="email" ref={emailRef} required/>
@@ -33,7 +59,7 @@ const SignUp = () => {
                         <label className="signUpLabel" htmlFor="passwordConfirm">Password Confirmation</label>
                         <input className="signUpInput" name="passwordConfirm" type="password" ref={passwordConfirmRef} required/>
                     </div>
-                    <button type="submit" className="formSubmit">Sign Up</button>
+                    <button disabled={loading} type="submit" className="formSubmit">Sign Up</button>
                 </form>
                 <p className="signIn">Already have an account? <strong>Sign In</strong></p>
             </div>
