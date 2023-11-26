@@ -4,8 +4,10 @@ import React, {createContext, useState} from "react";
 import Home from "./pages/Home";
 import Error from "./pages/Error";
 import DetailPage from "./pages/DetailPage";
+import SignUp from "./components/SignUp";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import  ScrollToTop  from "./components/ScrollToTop" 
+
 
  //Context Api
  export const PageContext = createContext()
@@ -23,6 +25,7 @@ function App() {
                 <Route index element={<Home/>}></Route>
                 <Route path="movie/:id" element={<DetailPage/>}></Route>
                 <Route path="/*" element={<Error/>}></Route>
+                <Route path="/signup" element={<SignUp/>}></Route>
               </Routes>
             </ScrollToTop>
           </Router>

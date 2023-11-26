@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import arrow from '../images/backarrow.png';
 import defaultbg from '../images/default-wallpapers.jpg'
 
@@ -21,7 +21,9 @@ const DetailPageBackdrop = (props) => {
                 goPrevious
             }/>
 
-            <p className="sign">Sign In</p>
+            <Link to={"/signup"} style={{textDecoration:"none",color:"white"}}>
+                <p className="sign">Sign In</p>
+            </Link>
         </>
     )
 }

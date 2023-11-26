@@ -1,6 +1,7 @@
 //Imports
 import React, { useEffect, useState, useContext } from "react";
 import { PageContext } from "../App";
+import { Link } from "react-router-dom";
 
 const Header = (props) => {
 
@@ -30,7 +31,9 @@ const [filter, setFilter] = useState("")
         <div className="header-wrapper center">
           <div className="signWrapper">
             <h1>Movie Premier App</h1>
-            <p>Sign In</p>
+            <Link to={"/signup"} style={{textDecoration:"none",color:"white"}}>
+              <p>Sign In</p>
+            </Link>
           </div>
           <form>
             {/* Genre selection */}

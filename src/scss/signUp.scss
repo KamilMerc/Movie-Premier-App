@@ -1,0 +1,101 @@
+.containermain {
+    height: 100vh;
+    @include DisplayFlexForm;
+    justify-content: center;
+
+    .homePage {
+        font-size: 1.3rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: .2s;
+        margin-bottom: 1.8rem;
+
+        &:hover {
+            color: red;
+        }
+    }
+
+    .formContainer {
+        width: 600px;
+        @include DisplayFlexForm;
+        border: 2px solid white;
+
+        h2 {
+            margin-bottom: 2rem;
+            font-size: 2rem;
+        }
+    
+        .signUpForm {
+            width: 80%;
+            @include DisplayFlexForm;
+            .formGroup {
+                @include DisplayFlexForm;
+                width: 400px;
+                margin-bottom: 1.5rem;
+
+                .signUpInput {
+                    width: 400px;
+                    height: 2rem;
+                    border-radius: 5px;
+                    border: 2px solid red;
+
+                    &:focus {
+                        outline: none;
+                    }
+                }
+
+                .signUpLabel {
+                    align-self: flex-start;
+                    margin-bottom: 10px;
+                    font-size: 1.2rem;
+                }
+            }
+
+            .formSubmit {
+                margin: 20px 0 5px 0;
+                padding: 5px 15px;
+                background-color: white;
+                color: red;
+                border: none;
+                border-radius: 5px;
+                font-weight: bold;
+                font-size: 1rem;
+                cursor: pointer;
+                transition: .2s;
+
+                &:hover {
+                    transform: scale(1.1);
+                }
+            }
+        }
+
+        .signIn {
+            strong {
+                cursor: pointer;
+                transition: .2s;
+
+                &:hover {
+                    color: red;
+                }
+            }
+        }
+    }
+}
+
+@media(max-width: 550px) and (min-width: 0px) {
+    .containermain {
+        .formContainer {
+            width: 340px;
+        
+            .signUpForm {
+                .formGroup {
+                    width: 300px;
+    
+                    .signUpInput {
+                        width: 300px;
+                    }
+                }
+            }
+        }
+    }
+}
