@@ -16,9 +16,6 @@ const SignUp = () => {
     const [error, setError] = useState("")
     const [loading, setLoading] = useState(false) //it is used to prevent multiple click sign up button when user is creating (preventing error occured)
 
-    const goBack = () => {
-        navigate(-1)
-    }
 
     const submitForm = async(e) => {
         e.preventDefault()
@@ -41,7 +38,7 @@ const SignUp = () => {
     return(
         <div className="containermain">
             
-                <p onClick={goBack} className="homePage">Back to previous page</p>
+            <Link to={"/"} style={{textDecoration:"none",color:"white"}}><p className="homePage">Back to home page</p></Link>
             
             <div className="formContainer">
                 <h2>Sign Up</h2>
