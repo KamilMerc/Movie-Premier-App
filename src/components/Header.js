@@ -31,7 +31,7 @@ const [filter, setFilter] = useState("")
         <div className="header-wrapper center">
           <div className="signWrapper">
             <h1>Movie Premier App</h1>
-            <Link to={"/signup"} style={{textDecoration:"none",color:"white"}}>
+            <Link to={"/signin"} style={{textDecoration:"none",color:"white"}}>
               <p>Sign In</p>
             </Link>
           </div>

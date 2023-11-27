@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import Error from "./pages/Error";
 import DetailPage from "./pages/DetailPage";
 import SignUp from "./components/SignUp";
+import SignIn from "./components/SignIn";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import  ScrollToTop  from "./components/ScrollToTop" 
 import { AuthProvider } from "./contexts/AuthContext";
@@ -28,6 +29,7 @@ function App() {
                   <Route path="movie/:id" element={<DetailPage/>}></Route>
                   <Route path="/*" element={<Error/>}></Route>
                   <Route path="/signup" element={<SignUp/>}></Route>
+                  <Route path="/signin" element={<SignIn/>}></Route>
                 </Routes>
               </ScrollToTop>
             </Router>
