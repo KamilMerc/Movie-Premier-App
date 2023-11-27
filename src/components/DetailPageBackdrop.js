@@ -2,11 +2,13 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom"
 import arrow from '../images/backarrow.png';
 import defaultbg from '../images/default-wallpapers.jpg'
+import { useAuth } from "../contexts/AuthContext";
 
 const DetailPageBackdrop = (props) => {
     const navigate = useNavigate()
     // const URL = `${props.url}&page=${props.currentPage}`
 
+    const { currentUser } = useAuth()
 
     const goPrevious = () => {
         // props.fetchMovies(URL)
@@ -21,9 +23,9 @@ const DetailPageBackdrop = (props) => {
                 goPrevious
             }/>
 
-            <Link to={"/signin"} style={{textDecoration:"none",color:"white"}}>
-                <p className="sign">Sign In</p>
-            </Link>
+            {currentUser ? <p className="sign">Hello Welcome</p> : <Link to={"/signin"} style={{textDecoration:"none",color:"white"}}>
+              <p className="sign">Sign In</p>
+            </Link>}
         </>
     )
 }

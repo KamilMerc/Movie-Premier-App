@@ -2,6 +2,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import { PageContext } from "../App";
 import { Link } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
 
 const Header = (props) => {
 
@@ -9,6 +10,8 @@ const {setCurrentPage, setNextPage, setPrevPage, fetchMovies} = useContext(PageC
 
 const [genre, setGenre] = useState("")
 const [filter, setFilter] = useState("")
+
+const { currentUser } = useAuth()
 
   //Fetch movies by selected genre
   const fetchWithFilters = () => {
@@ -31,9 +34,9 @@ const [filter, setFilter] = useState("")
         <div className="header-wrapper center">
           <div className="signWrapper">
             <h1>Movie Premier App</h1>
-            <Link to={"/signin"} style={{textDecoration:"none",color:"white"}}>
+            {currentUser ? <p>Hello Welcome</p> : <Link to={"/signin"} style={{textDecoration:"none",color:"white"}}>
               <p>Sign In</p>
-            </Link>
+            </Link>}
           </div>
           <form>
             {/* Genre selection */}
