@@ -1,13 +1,24 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom"; 
 import { useAuth } from "../contexts/AuthContext";
 
 const UserDashboard = () => {
 
     const [error, setError] = useState("")
-    const { currentUser } = useAuth()
+    const { currentUser, logout } = useAuth()
 
-    const logout = () => {
+    const navigate = useNavigate()
 
+    const userLogout = async() => {
+        setError("")
+            await logout()
+            navigate("/")
+        try {
+
+        }
+        catch {
+          setError("Failed to log out")  
+        }
     }
 
     return (
@@ -18,7 +29,7 @@ const UserDashboard = () => {
                 <p className="email"><strong>Email:</strong>{currentUser.email}</p>
                 <p className="update">Update Profile</p>
             </div>
-            <button onClick={logout}  className="logout">Log Out</button>
+            <button onClick={userLogout}  className="logout">Log Out</button>
         </div>
     )
 }
