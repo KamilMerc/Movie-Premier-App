@@ -8,7 +8,7 @@ const SignIn = () => {
     const emailRef = useRef()
     const passwordRef  = useRef()
 
-    const { login } = useAuth()
+    const { signin } = useAuth()
 
     const [error, setError] = useState("")
     const [loading, setLoading] = useState(false) //it is used to prevent multiple click sign up button when user is creating (preventing error occured)
@@ -20,7 +20,7 @@ const SignIn = () => {
         try {
             setError("")
             setLoading(true)
-            await login(emailRef.current.value, passwordRef.current.value)
+            await signin(emailRef.current.value, passwordRef.current.value)
         }
         catch {
             setError("Failed to sign in")
