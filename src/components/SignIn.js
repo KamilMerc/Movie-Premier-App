@@ -1,5 +1,5 @@
 import React,  { useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 
 const SignIn = () => {
@@ -9,6 +9,8 @@ const SignIn = () => {
     const passwordRef  = useRef()
 
     const { signin } = useAuth()
+
+    const navigate = useNavigate()
 
     const [error, setError] = useState("")
     const [loading, setLoading] = useState(false) //it is used to prevent multiple click sign up button when user is creating (preventing error occured)
@@ -21,6 +23,7 @@ const SignIn = () => {
             setError("")
             setLoading(true)
             await signin(emailRef.current.value, passwordRef.current.value)
+            navigate("/")
         }
         catch {
             setError("Failed to sign in")
