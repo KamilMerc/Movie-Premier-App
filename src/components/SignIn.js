@@ -1,10 +1,8 @@
 import React,  { useRef, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 
 const SignIn = () => {
-
-    const navigate = useNavigate()
 
     //useRef allows you to persist values between renders. It can be used to store a mutable value that does not cause a re-render when updated
     const emailRef = useRef()
