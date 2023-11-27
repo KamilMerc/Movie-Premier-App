@@ -23,7 +23,7 @@ const DetailPageBackdrop = (props) => {
                 goPrevious
             }/>
 
-            {currentUser ? <p className="sign">Hello Welcome</p> : <Link to={"/signin"} style={{textDecoration:"none",color:"white"}}>
+            {currentUser ? <Link to={"/userdashboard"} style={{textDecoration:"none",color:"white"}}><p className="sign">Hello Welcome</p></Link> : <Link to={"/signin"} style={{textDecoration:"none",color:"white"}}>
               <p className="sign">Sign In</p>
             </Link>}
         </>

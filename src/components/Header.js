@@ -34,7 +34,7 @@ const { currentUser } = useAuth()
         <div className="header-wrapper center">
           <div className="signWrapper">
             <h1>Movie Premier App</h1>
-            {currentUser ? <p>Hello Welcome</p> : <Link to={"/signin"} style={{textDecoration:"none",color:"white"}}>
+            {currentUser ? <Link to={"/userdashboard"} style={{textDecoration:"none",color:"white"}}><p>Hello Welcome</p></Link> : <Link to={"/signin"} style={{textDecoration:"none",color:"white"}}>
               <p>Sign In</p>
             </Link>}
           </div>

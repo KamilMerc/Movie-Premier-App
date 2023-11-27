@@ -6,9 +6,11 @@ import Error from "./pages/Error";
 import DetailPage from "./pages/DetailPage";
 import SignUp from "./components/SignUp";
 import SignIn from "./components/SignIn";
+import UserDashboard from "./components/UserDashboard";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import  ScrollToTop  from "./components/ScrollToTop" 
 import { AuthProvider } from "./contexts/AuthContext";
+
 
 
  //Context Api
@@ -30,6 +32,7 @@ function App() {
                   <Route path="/*" element={<Error/>}></Route>
                   <Route path="/signup" element={<SignUp/>}></Route>
                   <Route path="/signin" element={<SignIn/>}></Route>
+                  <Route path="/userdashboard" element={<UserDashboard/>}></Route>
                 </Routes>
               </ScrollToTop>
             </Router>
