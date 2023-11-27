@@ -64,3 +64,12 @@
         }
     }
 }
+
+@media(max-width: 550px) and (min-width: 0px) {
+    .containerdashboard {
+    
+        .profile {
+            width: 300px;
+        }
+    }
+}
