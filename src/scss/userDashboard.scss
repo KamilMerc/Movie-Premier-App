@@ -3,6 +3,10 @@
     @include DisplayFlexForm;
     justify-content: center;
 
+    .homePage {
+        @include homePage
+    }
+
     .profile {
         width: 400px;
         border: 2px solid red;

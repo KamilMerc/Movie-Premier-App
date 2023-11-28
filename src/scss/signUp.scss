@@ -4,15 +4,7 @@
     justify-content: center;
 
     .homePage {
-        font-size: 1.3rem;
-        font-weight: bold;
-        cursor: pointer;
-        transition: .2s;
-        margin-bottom: 1.8rem;
-
-        &:hover {
-            color: red;
-        }
+        @include homePage
     }
 
     .formContainer {

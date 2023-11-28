@@ -23,6 +23,8 @@ const UserDashboard = () => {
 
     return (
         <div className="containerdashboard">
+            <Link to={"/"} style={{textDecoration:"none",color:"white"}}><p className="homePage">Back to home page</p></Link>
+            
             <div className="profile">
                 <h2>Profile</h2>
                 {error && <p className="error">{error}</p>}
