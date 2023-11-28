@@ -8,6 +8,7 @@ import SignUp from "./components/SignUp";
 import SignIn from "./components/SignIn";
 import UserDashboard from "./components/UserDashboard";
 import ForgotPassword from "./components/ForgotPassword";
+import UpdateProfile from "./components/UpdateProfile";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import  ScrollToTop  from "./components/ScrollToTop" 
@@ -40,6 +41,12 @@ function App() {
                     </ProtectedRoute>}>
                   </Route>
                   <Route path="/forgetpassword" element={<ForgotPassword/>}></Route>
+                  <Route path="/updateprofile" 
+                    element={ 
+                    <ProtectedRoute>
+                      <UpdateProfile/>
+                    </ProtectedRoute>}>
+                  </Route>
                 </Routes>
               </ScrollToTop>
             </Router>

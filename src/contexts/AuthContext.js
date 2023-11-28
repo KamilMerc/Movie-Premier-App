@@ -7,7 +7,9 @@ import {
     signOut,
     GoogleAuthProvider,
     signInWithPopup,
-    sendPasswordResetEmail
+    sendPasswordResetEmail,
+    updateEmail,
+    updatePassword
 } from "firebase/auth"
 
 const AuthContext = React.createContext()
@@ -43,6 +45,14 @@ export const AuthProvider = ({children}) => {
         return sendPasswordResetEmail(auth, email)
     }
 
+    const emailUpdate = (email) => {
+        return updateEmail(currentUser, email)
+    }
+
+    const passwordUpdate = (password) => {
+        return updatePassword(currentUser, password)
+    }
+
     //setCurrentUser
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -59,7 +69,9 @@ export const AuthProvider = ({children}) => {
         signup,
         googlesignin,
         logout,
-        resetpassword
+        resetpassword,
+        emailUpdate,
+        passwordUpdate
     }
 
     return (
