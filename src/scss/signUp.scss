@@ -63,6 +63,23 @@
                 }
             }
 
+            .googlesignin {
+                width: 400px;
+                height: 2.2rem;
+                line-height: 2.2rem;
+                margin: 2rem 0 1rem 0;
+                background-color: white;
+                color: red;
+                font-weight: bold;
+                border-radius: 10px;
+                cursor: pointer;
+                transition: .2s;
+
+                &:hover {
+                    background-color: darken($color: white, $amount: 25%);
+                }
+            }
+
             .formSubmit {
                 margin: 20px 0 5px 0;
                 padding: 5px 15px;
@@ -110,6 +127,10 @@
                     .signUpInput {
                         width: 300px;
                     }
+                }
+
+                .googlesignin {
+                    width: 300px;
                 }
             }
         }

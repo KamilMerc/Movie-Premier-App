@@ -8,7 +8,7 @@ const SignIn = () => {
     const emailRef = useRef()
     const passwordRef  = useRef()
 
-    const { signin } = useAuth()
+    const { signin, googlesignin } = useAuth()
 
     const navigate = useNavigate()
 
@@ -31,6 +31,17 @@ const SignIn = () => {
         setLoading(false)
     }
 
+    const googleSignIn = async() => {
+        try {
+            setError("")
+            await googlesignin()
+            navigate("/")
+        }
+        catch {
+            setError("Failed to sign in")
+        }
+    }
+
     return(
         <div className="containermain">
             
@@ -48,6 +59,7 @@ const SignIn = () => {
                         <label className="signUpLabel" htmlFor="password">Password</label>
                         <input className="signUpInput" name="password" type="password" ref={passwordRef} required/>
                     </div>
+                    <p className="googlesignin" onClick={googleSignIn}>Sign In with Google</p>
                     <button disabled={loading} type="submit" className="formSubmit">Sign In</button>
                 </form>
                 <p className="signIn">Don't have an account? <Link to={"/signup"} style={{textDecoration:"none",color:"white"}}><strong>Sign Up</strong></Link></p>
