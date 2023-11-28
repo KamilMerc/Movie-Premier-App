@@ -7,6 +7,7 @@ import DetailPage from "./pages/DetailPage";
 import SignUp from "./components/SignUp";
 import SignIn from "./components/SignIn";
 import UserDashboard from "./components/UserDashboard";
+import ForgotPassword from "./components/ForgotPassword";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import  ScrollToTop  from "./components/ScrollToTop" 
@@ -38,6 +39,7 @@ function App() {
                       <UserDashboard/>
                     </ProtectedRoute>}>
                   </Route>
+                  <Route path="/forgetpassword" element={<ForgotPassword/>}></Route>
                 </Routes>
               </ScrollToTop>
             </Router>

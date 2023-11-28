@@ -25,7 +25,7 @@
             font-size: 2rem;
         }
 
-        .error {
+        .error, .success {
             font-weight: bold;
             font-size: 1.1rem;
             width: 400px;
@@ -34,6 +34,10 @@
             text-align: left;
             background-color: rgba($color: red, $alpha: .4);
             
+        }
+
+        .success {
+            background-color: rgba($color: green, $alpha: .4);
         }
     
         .signUpForm {
@@ -98,7 +102,7 @@
             }
         }
 
-        .signIn {
+        .signIn, .forgotpass {
             strong {
                 cursor: pointer;
                 transition: .2s;
@@ -106,6 +110,16 @@
                 &:hover {
                     color: red;
                 }
+            }
+        }
+
+        .forgotpass {
+            cursor: pointer;
+            transition: .2s;
+            font-weight: bold;
+
+            &:hover {
+                color: red;
             }
         }
     }
@@ -116,7 +130,7 @@
         .formContainer {
             width: 340px;
 
-            .error {
+            .error, .success {
                 width: 300px;    
             }
         
