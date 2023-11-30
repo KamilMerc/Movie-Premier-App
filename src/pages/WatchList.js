@@ -1,5 +1,5 @@
 import React from "react";
-import SavedMovies from "./SavedMovies";
+import SavedMovies from "../components/SavedMovies";
 
 const WatchList = () => {
 

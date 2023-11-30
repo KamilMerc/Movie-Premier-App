@@ -4,12 +4,12 @@ import React, {createContext, useState} from "react";
 import Home from "./pages/Home";
 import Error from "./pages/Error";
 import DetailPage from "./pages/DetailPage";
-import SignUp from "./components/SignUp";
-import SignIn from "./components/SignIn";
-import UserDashboard from "./components/UserDashboard";
-import WatchList from "./components/WatchList";
-import ForgotPassword from "./components/ForgotPassword";
-import UpdateProfile from "./components/UpdateProfile";
+import SignUp from "./pages/SignUp";
+import SignIn from "./pages/SignIn";
+import UserDashboard from "./pages/UserDashboard";
+import WatchList from "./pages/WatchList";
+import ForgotPassword from "./pages/ForgotPassword";
+import UpdateProfile from "./pages/UpdateProfile";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import  ScrollToTop  from "./components/ScrollToTop" 
