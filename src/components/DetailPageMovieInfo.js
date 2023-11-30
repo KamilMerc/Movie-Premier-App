@@ -1,9 +1,38 @@
 import React, { useState } from "react";
 import { FaHeart, FaRegHeart } from "react-icons/fa"
+import { useAuth } from "../contexts/AuthContext";
+import { db } from "../firebase"
+import {
+    arrayUnion,
+    doc,
+    updateDoc
+} from "firebase/firestore"
 
 const DetailPageMovieInfo = (props) => {
-
+    console.log(props)
     const [favorite, setFavorite] = useState(false)
+    const [saves, setSaved] = useState(false)
+    const { currentUser } = useAuth()
+
+    //referencing the database of users that grabing specyfic user email
+    const movieId = doc(db, 'users', `${currentUser?.email}`)
+
+    //arrayUnion - update document in firebase
+    const saveMovie = async () => {
+        if(currentUser?.email) {
+            setFavorite(!favorite)
+            setSaved(true)
+            await updateDoc(movieId, {
+               savedMovies: arrayUnion({
+                id: props.movie.id,
+                title: props.movie.title,
+                poster: props.movie.poster_path
+               })
+            })
+        } else {
+            alert("Sign In to save movie")
+        }
+    }
 
     //Change minutes to hours 
     const minutesToHours = () => {
@@ -41,7 +70,7 @@ const DetailPageMovieInfo = (props) => {
 
                     <h3 className="tagline">{props.movie.tagline ? props.movie.tagline : <h3 className="no-tagline">No tagline found</h3>}</h3>
 
-                    <div className="addtofav">
+                    <div onClick={saveMovie} className="addtofav">
                         {favorite ? <FaHeart className="heart" /> : <FaRegHeart className="heart"/>}
                     </div>
 

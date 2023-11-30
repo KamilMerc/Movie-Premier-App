@@ -30,6 +30,7 @@ const UserDashboard = () => {
                 {error && <p className="error">{error}</p>}
                 <p className="email"><strong>Email:</strong>{currentUser.email}</p>
                 {currentUser.email.includes("@gmail.com") ? null : <Link to={"/updateprofile"} style={{textDecoration:"none",color:"white"}}><p className="update">Update Profile</p></Link>}
+                {<Link to={"/watchlist"} style={{textDecoration:"none",color:"white"}}><p className="update">Watch list</p></Link>}
             </div>
             <button onClick={userLogout}  className="logout">Log Out</button>
         </div>
