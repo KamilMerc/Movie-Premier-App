@@ -24,12 +24,22 @@
                 font-size: 4rem;
                 margin: 0;
             }
+
+            .addtofav {
+                margin-top: 2rem;
+                .heart {
+                    width: 50px;
+                    height: 50px;
+                    color: red;
+                    cursor: pointer;
+                }
+            }
     
             .releaseanddate {
                 width: 570px;
                 display: flex;
                 justify-content: space-between;
-                margin: 1.5rem 0 .5rem 0;
+                margin: .5rem 0 .5rem 0;
                 font-size: 1.1rem;
                 font-weight: bold;
                 color: red;

@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
+import { FaHeart, FaRegHeart } from "react-icons/fa"
 
 const DetailPageMovieInfo = (props) => {
+
+    const [favorite, setFavorite] = useState(false)
 
     //Change minutes to hours 
     const minutesToHours = () => {
@@ -37,6 +40,10 @@ const DetailPageMovieInfo = (props) => {
                     <h1 className="title">{props.movie.title}</h1>
 
                     <h3 className="tagline">{props.movie.tagline ? props.movie.tagline : <h3 className="no-tagline">No tagline found</h3>}</h3>
+
+                    <div className="addtofav">
+                        {favorite ? <FaHeart className="heart" /> : <FaRegHeart className="heart"/>}
+                    </div>
 
                     <div className="releaseanddate">
                         <p className="release-date">Release date: {props.movie.release_date ? props.releaseDate : "None"}</p>
