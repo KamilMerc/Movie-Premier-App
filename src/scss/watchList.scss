@@ -1,7 +1,14 @@
 .watchListWrapper{
-    .title {
-        font-size: 2.5rem;
+    .wishListHeader {
+        .title {
+            font-size: 2.5rem;
+        }
+
+        .homePage {
+            @include homePage
+        }
     }
+
     .watchList {
         margin-top: 0;
 
