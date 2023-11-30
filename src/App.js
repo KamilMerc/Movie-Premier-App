@@ -7,6 +7,7 @@ import DetailPage from "./pages/DetailPage";
 import SignUp from "./components/SignUp";
 import SignIn from "./components/SignIn";
 import UserDashboard from "./components/UserDashboard";
+import WatchList from "./components/WatchList";
 import ForgotPassword from "./components/ForgotPassword";
 import UpdateProfile from "./components/UpdateProfile";
 import ProtectedRoute from "./components/ProtectedRoute";
@@ -45,6 +46,12 @@ function App() {
                     element={ 
                     <ProtectedRoute>
                       <UpdateProfile/>
+                    </ProtectedRoute>}>
+                  </Route>
+                  <Route path="/watchlist" 
+                    element={ 
+                    <ProtectedRoute>
+                      <WatchList/>
                     </ProtectedRoute>}>
                   </Route>
                 </Routes>

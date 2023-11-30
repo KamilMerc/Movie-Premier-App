@@ -1,0 +1,19 @@
+.watchListWrapper{
+    .title {
+        font-size: 2.5rem;
+    }
+    .watchList {
+        margin-top: 0;
+
+        .watchMovieCard{
+            .deleteFromList {
+                color: white;
+
+                .close {
+                    width: 25px;
+                    height: 25px;
+                }
+            }
+        }
+    }
+}

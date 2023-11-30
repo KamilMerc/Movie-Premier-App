@@ -11,7 +11,6 @@ import {
 const DetailPageMovieInfo = (props) => {
     console.log(props)
     const [favorite, setFavorite] = useState(false)
-    const [saves, setSaved] = useState(false)
     const { currentUser } = useAuth()
 
     //referencing the database of users that grabing specyfic user email
@@ -21,7 +20,6 @@ const DetailPageMovieInfo = (props) => {
     const saveMovie = async () => {
         if(currentUser?.email) {
             setFavorite(!favorite)
-            setSaved(true)
             await updateDoc(movieId, {
                savedMovies: arrayUnion({
                 id: props.movie.id,
