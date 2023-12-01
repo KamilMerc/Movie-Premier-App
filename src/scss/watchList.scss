@@ -13,6 +13,16 @@
         margin-top: 0;
 
         .watchMovieCard{
+            &:hover {
+                .movietitle {
+                    color: red;
+                }
+            }
+
+            .movietitle {
+                color: white;
+            }
+
             .deleteFromList {
                 color: white;
 

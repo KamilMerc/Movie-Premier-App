@@ -39,7 +39,7 @@ const SavedMovies = () => {
                 movies.map((movie, id) => (
                 <div key={id} className='moviecard watchMovieCard'>
                     {/* Movie card contains movie poster (if exists) and movie title */}
-                    <Link to={`/movie/${movie.id}`} style={{textDecoration:"none",color:"white"}}>
+                    <Link to={`/movie/${movie.id}`} style={{textDecoration:"none"}}>
                     {movie?.poster ? <img className='moviecover' src={`${process.env.REACT_APP_BASE_IMAGE_URL}w300${movie?.poster}`} alt=""/> : <div className='movie-placeholder'>No image found</div>}
                     <h5 className='movietitle'>{movie?.title}</h5>
                     </Link>
