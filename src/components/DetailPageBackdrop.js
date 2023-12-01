@@ -6,12 +6,10 @@ import { useAuth } from "../contexts/AuthContext";
 
 const DetailPageBackdrop = (props) => {
     const navigate = useNavigate()
-    // const URL = `${props.url}&page=${props.currentPage}`
 
     const { currentUser } = useAuth()
 
     const goPrevious = () => {
-        // props.fetchMovies(URL)
         navigate(-1)
     }
 

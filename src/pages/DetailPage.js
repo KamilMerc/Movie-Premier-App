@@ -7,7 +7,7 @@ import DetailPageCast from "../components/DetailPageCast";
 import DetailPageProviders from "../components/DetailPageProviders";
 import DetailPageVideo from "../components/DetailPageVideo";
 
-function DetailPage(props) {
+function DetailPage() {
 
     const { id } = useParams();
     const [movie, setMovie] = useState([]);
@@ -70,10 +70,6 @@ function DetailPage(props) {
             <DetailPageBackdrop
                 backdropImage={backdropImage}
                 backdrop={backdrop}
-                currentPage = {location.state.currentPage}
-                url = {location.state.url}
-                // fetchMovies = {props.fetchMovies}
-                // setCurrentPage = {props.setCurrentPage}
             />
 
             {/* Call DetailPageMovieInfo component and pass props to it */}

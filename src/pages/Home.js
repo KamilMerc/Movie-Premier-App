@@ -84,7 +84,7 @@ function Home() {
   
   //Passing fetched movies to 'MovieCard' component
   const renderMovies = () => {
-    return movies.map((movie) => <MovieCard key={movie.id} movie={movie} currentPage={currentPage} url={URL}/>);
+    return movies.map((movie) => <MovieCard key={movie.id} movie={movie}/>);
   }
 
   return (
