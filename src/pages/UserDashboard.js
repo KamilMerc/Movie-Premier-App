@@ -1,17 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useContext} from "react";
 import { useNavigate, Link } from "react-router-dom"; 
 import { useAuth } from "../contexts/AuthContext";
+import { PageContext } from "../App";
 
 const UserDashboard = () => {
 
     const [error, setError] = useState("")
     const { currentUser, logout } = useAuth()
+    const {setCurrentPageRec} = useContext(PageContext)
 
     const navigate = useNavigate()
 
     const userLogout = async() => {
         setError("")
             await logout()
+            setCurrentPageRec(1)
             navigate("/")
         try {
 
