@@ -13,6 +13,12 @@ const DetailPageMovieInfo = (props) => {
     const [favorite, setFavorite] = useState(false)
     const { currentUser } = useAuth()
 
+    let genres = []
+
+    props.genres.slice(0,5).map(genre => (
+        genres.push(genre.id)
+    ))
+
     //referencing the database of users that grabing specyfic user email
     const movieId = doc(db, 'users', `${currentUser?.email}`)
 
@@ -24,7 +30,8 @@ const DetailPageMovieInfo = (props) => {
                savedMovies: arrayUnion({
                 id: props.movie.id,
                 title: props.movie.title,
-                poster: props.movie.poster_path
+                poster: props.movie.poster_path,
+                genres: genres
                })
             })
         } else {

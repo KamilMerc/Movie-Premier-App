@@ -10,10 +10,12 @@ import UserDashboard from "./pages/UserDashboard";
 import WatchList from "./pages/WatchList";
 import ForgotPassword from "./pages/ForgotPassword";
 import UpdateProfile from "./pages/UpdateProfile";
+import Recommended from "./pages/Recommended";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import  ScrollToTop  from "./components/ScrollToTop" 
 import { AuthProvider } from "./contexts/AuthContext";
+
 
 
  //Context Api
@@ -21,12 +23,13 @@ import { AuthProvider } from "./contexts/AuthContext";
 
 function App() {
   const [currentPage, setCurrentPage] = useState();
+  const [currentPageRec, setCurrentPageRec] = useState(1);
 
-  console.log(currentPage)
+  console.log(currentPage, currentPageRec)
   return (
     <div className="App">
       <AuthProvider>
-        <PageContext.Provider value={{currentPage, setCurrentPage}}>
+        <PageContext.Provider value={{currentPage, setCurrentPage, currentPageRec, setCurrentPageRec}}>
           <Router>
               <ScrollToTop>
                 <Routes>
@@ -53,6 +56,12 @@ function App() {
                     <ProtectedRoute>
                       <WatchList/>
                     </ProtectedRoute>}>
+                  </Route>
+                  <Route path="/recommended"
+                    element={
+                      <ProtectedRoute>
+                        <Recommended/>
+                      </ProtectedRoute>}>    
                   </Route>
                 </Routes>
               </ScrollToTop>

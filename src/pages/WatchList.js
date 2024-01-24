@@ -10,6 +10,9 @@ const WatchList = () => {
                 <div className="wishListHeader">
                     <h1 className="title">Watch list</h1>
                     <Link to={"/"} style={{textDecoration:"none",color:"white"}}><p className="homePage">Back to home page</p></Link>
+                    <Link to={"/recommended"} style={{textDecoration:"none",color:"white"}}>
+                    <p className="homePage">Recommended Movies</p>
+                    </Link>
                 </div>
                 <div className="container center watchList">
                     <SavedMovies/>

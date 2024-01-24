@@ -1,0 +1,32 @@
+.rec-empty {
+    height: 100vh;
+    padding: 0 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .empty {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    .homePage {
+        @include homePage
+    }
+}
+
+.recomendation-header{
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    font-size: 1rem;
+    z-index: 1;
+    background-color: #090A0E;
+
+    .homePage {
+        @include homePage;
+    }
+}
