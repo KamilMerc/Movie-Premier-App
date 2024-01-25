@@ -22,11 +22,19 @@
     left: 50%;
     transform: translateX(-50%);
     width: 100%;
-    font-size: 1rem;
+    font-size: 1.2rem;
+    color: red;
     z-index: 1;
     background-color: #090A0E;
 
     .homePage {
         @include homePage;
+        width: max-content;
+        margin-left: 50%;
+        transform: translateX(-50%);
     }
+}
+
+.recom {
+    margin-top: 9rem;
 }

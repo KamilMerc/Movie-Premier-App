@@ -136,7 +136,7 @@ const getGenresString = () => {
                           <Link to={"/"} style={{textDecoration:"none",color:"white"}}><p className="homePage">Back to home page</p></Link>
                         </div>
 
-                        <div className="container center">{renderMovies()}</div>
+                        <div className="container center recom">{renderMovies()}</div>
 
                         <PaginationPageInfoRec/>
 
