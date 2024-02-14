@@ -22,7 +22,7 @@ import { AuthProvider } from "./contexts/AuthContext";
  export const PageContext = createContext()
 
 function App() {
-  const [currentPage, setCurrentPage] = useState();
+  const [currentPage, setCurrentPage] = useState(1);
   const [currentPageRec, setCurrentPageRec] = useState(1);
 
   console.log(currentPage, currentPageRec)
