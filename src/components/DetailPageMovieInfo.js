@@ -1,17 +1,40 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaHeart, FaRegHeart } from "react-icons/fa"
 import { useAuth } from "../contexts/AuthContext";
 import { db } from "../firebase"
 import {
     arrayUnion,
     doc,
-    updateDoc
+    updateDoc,
+    getDoc
 } from "firebase/firestore"
 
 const DetailPageMovieInfo = (props) => {
     console.log(props)
     const [favorite, setFavorite] = useState(false)
+    const [moviesFromBase, setMoviesFromBase] = useState([])
     const { currentUser } = useAuth()
+
+    useEffect(() => {
+        const fetchData = async () => {
+          try {
+            const documentSnapshot = doc(db, 'users', `${currentUser?.email}`);
+            const data = (await getDoc(documentSnapshot)).data();
+            setMoviesFromBase(data?.savedMovies);
+          }catch(e) {
+            console.error(e)
+          }
+        }
+        fetchData()
+      },[currentUser?.email])
+
+
+    useEffect(() => {
+        moviesFromBase && moviesFromBase.forEach(movie => {
+            if(movie.title === props.movie.title) setFavorite(true)
+        })
+    },[props.movie.title])
+
 
     let genres = []
 
