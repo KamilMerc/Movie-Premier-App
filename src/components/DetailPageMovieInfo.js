@@ -33,7 +33,7 @@ const DetailPageMovieInfo = (props) => {
         moviesFromBase && moviesFromBase.forEach(movie => {
             if(movie.title === props.movie.title) setFavorite(true)
         })
-    },[props.movie.title])
+    },[moviesFromBase, props.movie.title])
 
 
     let genres = []
