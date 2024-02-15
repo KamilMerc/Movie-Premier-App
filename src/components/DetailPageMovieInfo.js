@@ -6,7 +6,7 @@ import {
     arrayUnion,
     doc,
     updateDoc,
-    getDoc
+    getDoc,
 } from "firebase/firestore"
 
 const DetailPageMovieInfo = (props) => {
@@ -34,6 +34,21 @@ const DetailPageMovieInfo = (props) => {
             if(movie.title === props.movie.title) setFavorite(true)
         })
     },[moviesFromBase, props.movie.title])
+
+
+    const movieRef = doc(db, 'users', `${currentUser?.email}`)
+
+    const deleteFromWatchList = async(movieId) => {
+        try {
+            const result = moviesFromBase.filter((item) => item.id !== movieId)
+            await updateDoc(movieRef, {
+                savedMovies: result
+            })
+        } catch(error) {
+            console.log(error)
+        }
+        setFavorite(!favorite)
+    }
 
 
     let genres = []
@@ -98,8 +113,8 @@ const DetailPageMovieInfo = (props) => {
 
                     <h3 className="tagline">{props.movie.tagline ? props.movie.tagline : <h3 className="no-tagline">No tagline found</h3>}</h3>
 
-                    <div onClick={saveMovie} className="addtofav">
-                        {favorite ? <FaHeart className="heart" /> : <FaRegHeart className="heart"/>}
+                    <div className="addtofav">
+                        {favorite ? <FaHeart className="heart" onClick={() => deleteFromWatchList(props.movie.id)} /> : <FaRegHeart className="heart" onClick={saveMovie}/>}
                     </div>
 
                     <div className="releaseanddate">
