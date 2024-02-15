@@ -6,7 +6,7 @@ import { useAuth } from "../contexts/AuthContext";
 
 const Header = (props) => {
 
-const {setCurrentPage, setNextPage, setPrevPage, fetchMovies} = useContext(PageContext)
+const {setCurrentPage, setNextPage, setPrevPage, fetchMovies, queryParamBack, queryParamForward} = useContext(PageContext)
 
 const [genre, setGenre] = useState("")
 const [filter, setFilter] = useState("")
@@ -20,7 +20,7 @@ const { currentUser } = useAuth()
     setNextPage(2)
     setPrevPage(0)
     //Passing to fetchMovies function URL with 'with_genre' attribute that allows get movies only with particular genre
-    fetchMovies(`${props.URL}${genre}${filter}
+    fetchMovies(`${process.env.REACT_APP_API_URL}${process.env.REACT_APP_API_KEY}&primary_release_date.gte=${queryParamBack()}&primary_release_date.lte=${queryParamForward()}${genre}${filter}
     `)
     window.scrollTo({top: 0, behavior: 'smooth'});
   }

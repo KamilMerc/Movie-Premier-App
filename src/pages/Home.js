@@ -89,7 +89,7 @@ function Home() {
 
   return (
     <div className="App">
-      <PageContext.Provider value={{movies, setMovies, currentPage, setCurrentPage, prevPage, setPrevPage, nextPage, setNextPage, totalPagesNumber, setTotalPagesNumber, lastUrl, setLastUrl, fetchMovies}}>
+      <PageContext.Provider value={{movies, setMovies, currentPage, setCurrentPage, prevPage, setPrevPage, nextPage, setNextPage, totalPagesNumber, setTotalPagesNumber, lastUrl, setLastUrl, fetchMovies, queryParamBack, queryParamForward}}>
         <Header
           URL = {URL}
         />
