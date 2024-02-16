@@ -7,7 +7,7 @@ const UserDashboard = () => {
 
     const [error, setError] = useState("")
     const { currentUser, logout } = useAuth()
-    const {setCurrentPageRec} = useContext(PageContext)
+    const {setCurrentPageRec, setGenre, setFilter} = useContext(PageContext)
 
     const navigate = useNavigate()
 
@@ -15,6 +15,8 @@ const UserDashboard = () => {
         setError("")
             await logout()
             setCurrentPageRec(1)
+            setGenre("")
+            setFilter("")
             navigate("/")
         try {
 
