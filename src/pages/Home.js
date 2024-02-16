@@ -9,7 +9,7 @@ import { PageContext } from "../App";
 
 function Home() {
  
-  const {currentPage, setCurrentPage} = useContext(PageContext)
+  const {currentPage, setCurrentPage, genre, setGenre, filter, setFilter} = useContext(PageContext)
 
     //States
   const [movies, setMovies] = useState([]);
@@ -51,7 +51,7 @@ function Home() {
 
 
 //   //API URL
-  const URL = `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_API_KEY}&primary_release_date.gte=${queryParamBack()}&primary_release_date.lte=${queryParamForward()}&page=${currentPage}`;
+  const URL = `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_API_KEY}&primary_release_date.gte=${queryParamBack()}&primary_release_date.lte=${queryParamForward()}${genre}${filter}&page=${currentPage}`;
 
   console.log(URL)
 
@@ -67,7 +67,6 @@ function Home() {
       .then((data) => {
         if (data.results.length !== 0) {
           setMovies(data.results);
-          setLastUrl(url);
           setCurrentPage(data.page)
           setTotalPagesNumber(data.total_pages);
         }
@@ -89,10 +88,8 @@ function Home() {
 
   return (
     <div className="App">
-      <PageContext.Provider value={{movies, setMovies, currentPage, setCurrentPage, prevPage, setPrevPage, nextPage, setNextPage, totalPagesNumber, setTotalPagesNumber, lastUrl, setLastUrl, fetchMovies, queryParamBack, queryParamForward}}>
-        <Header
-          URL = {URL}
-        />
+      <PageContext.Provider value={{movies, setMovies, currentPage, setCurrentPage, prevPage, setPrevPage, nextPage, setNextPage, totalPagesNumber, setTotalPagesNumber, lastUrl, setLastUrl, fetchMovies, queryParamBack, queryParamForward, genre, setGenre, filter, setFilter}}>
+        <Header/>
 
         {/* Calling renderMovies function that places movie cards from 'MovieCard' component into 'container' div*/}
         <div className="container center">{renderMovies()}</div>

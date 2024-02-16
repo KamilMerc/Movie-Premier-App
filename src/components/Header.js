@@ -1,15 +1,12 @@
 //Imports
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import { PageContext } from "../App";
 import { Link } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 
-const Header = (props) => {
+const Header = () => {
 
-const {setCurrentPage, setNextPage, setPrevPage, fetchMovies, queryParamBack, queryParamForward} = useContext(PageContext)
-
-const [genre, setGenre] = useState("")
-const [filter, setFilter] = useState("")
+const {setCurrentPage, setNextPage, setPrevPage, fetchMovies, queryParamBack, queryParamForward, genre, setGenre, filter, setFilter} = useContext(PageContext)
 
 const { currentUser } = useAuth()
 
@@ -26,7 +23,7 @@ const { currentUser } = useAuth()
   }
 
   useEffect(() => {
-    fetchWithFilters()
+      fetchWithFilters()
   },[genre,filter])
 
     return (
@@ -50,26 +47,26 @@ const { currentUser } = useAuth()
                 }}
               >
                 {/* Genre options */}
-                <option value="">All genres</option>
-                <option value="28">Action</option>
-                <option value="12">Adventure</option>
-                <option value="16">Animation</option>
-                <option value="35">Comedy</option>
-                <option value="80">Crime</option>
-                <option value="99">Documentary</option>
-                <option value="18">Drama</option>
-                <option value="10751">Family</option>
-                <option value="14">Fantasy</option>
-                <option value="36">History</option>
-                <option value="27">Horror</option>
-                <option value="10402">Music</option>
-                <option value="9648">Mystery</option>
-                <option value="10749">Romance</option>
-                <option value="878">Science Fiction</option>
-                <option value="10770">TV Movie</option>
-                <option value="53">Thriller</option>
-                <option value="10752">War</option>
-                <option value="37">Western</option>
+                <option selected={genre === "&with_genres="} value="">All genres</option>
+                <option selected={genre === "&with_genres=28"} value="28">Action</option>
+                <option selected={genre === "&with_genres=12"} value="12">Adventure</option>
+                <option selected={genre === "&with_genres=16"} value="16">Animation</option>
+                <option selected={genre === "&with_genres=35"} value="35">Comedy</option>
+                <option selected={genre === "&with_genres=80"} value="80">Crime</option>
+                <option selected={genre === "&with_genres=99"} value="99">Documentary</option>
+                <option selected={genre === "&with_genres=18"} value="18">Drama</option>
+                <option selected={genre === "&with_genres=10751"} value="10751">Family</option>
+                <option selected={genre === "&with_genres=14"} value="14">Fantasy</option>
+                <option selected={genre === "&with_genres=36"} value="36">History</option>
+                <option selected={genre === "&with_genres=27"} value="27">Horror</option>
+                <option selected={genre === "&with_genres=10402"} value="10402">Music</option>
+                <option selected={genre === "&with_genres=9648"} value="9648">Mystery</option>
+                <option selected={genre === "&with_genres=10749"} value="10749">Romance</option>
+                <option selected={genre === "&with_genres=878"} value="878">Science Fiction</option>
+                <option selected={genre === "&with_genres=10770"} value="10770">TV Movie</option>
+                <option selected={genre === "&with_genres=53"} value="53">Thriller</option>
+                <option selected={genre === "&with_genres=10752"} value="10752">War</option>
+                <option selected={genre === "&with_genres=37"} value="37">Western</option>
               </select>
             </div>
             
@@ -83,12 +80,12 @@ const { currentUser } = useAuth()
                 }}
               >
                 {/* sortby options */}
-                <option value="popularity.desc">Popularity DESC</option>
-                <option value="popularity.asc">Popularity ASC</option>
-                <option value="vote_average.desc">Vote average DESC</option>
-                <option value="vote_average.asc">Vote average ASC</option>
-                <option value="primary_release_date.desc">Release date DESC</option>
-                <option value="primary_release_date.asc">Release date ASC</option>
+                <option selected={filter === "&sort_by=popularity.desc"} value="popularity.desc">Popularity DESC</option>
+                <option selected={filter === "&sort_by=popularity.asc"} value="popularity.asc">Popularity ASC</option>
+                <option selected={filter === "&sort_by=vote_average.desc"} value="vote_average.desc">Vote average DESC</option>
+                <option selected={filter === "&sort_by=vote_average.asc"} value="vote_average.asc">Vote average ASC</option>
+                <option selected={filter === "&sort_by=primary_release_date.desc"} value="primary_release_date.desc">Release date DESC</option>
+                <option selected={filter === "&sort_by=primary_release_date.asc"} value="primary_release_date.asc">Release date ASC</option>
               </select>
               </div>
           </form>

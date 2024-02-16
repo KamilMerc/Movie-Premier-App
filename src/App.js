@@ -24,12 +24,13 @@ import { AuthProvider } from "./contexts/AuthContext";
 function App() {
   const [currentPage, setCurrentPage] = useState(1);
   const [currentPageRec, setCurrentPageRec] = useState(1);
+  const [genre, setGenre] = useState("")
+  const [filter, setFilter] = useState("")
 
-  console.log(currentPage, currentPageRec)
   return (
     <div className="App">
       <AuthProvider>
-        <PageContext.Provider value={{currentPage, setCurrentPage, currentPageRec, setCurrentPageRec}}>
+        <PageContext.Provider value={{currentPage, setCurrentPage, currentPageRec, setCurrentPageRec, genre, setGenre, filter, setFilter}}>
           <Router>
               <ScrollToTop>
                 <Routes>
