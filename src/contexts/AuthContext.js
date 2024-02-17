@@ -9,7 +9,8 @@ import {
     signInWithPopup,
     sendPasswordResetEmail,
     updateEmail,
-    updatePassword
+    updatePassword,
+    getAdditionalUserInfo,
 } from "firebase/auth"
 
 import {
@@ -36,11 +37,24 @@ export const AuthProvider = ({children}) => {
         })
     }
 
-    const googlesignin = () => {
-        const googleAuthProvider = new GoogleAuthProvider()
-        return signInWithPopup(auth, googleAuthProvider)
-    }
+    const googlesignin = async () => {
+        const googleAuthProvider = new GoogleAuthProvider();
+        try {
+            const result = await signInWithPopup(auth, googleAuthProvider);
+            const user = result.user;
+            const additionalUserInfo = getAdditionalUserInfo(result);
 
+            if (additionalUserInfo.isNewUser) {
+                await setDoc(doc(db, 'users', user.email), {
+                    savedMovies: []
+                });
+            }
+        } catch (error) {
+            console.log("Błąd podczas logowania za pomocą konta Google:", error.message);
+        }
+    };
+
+   
     const signin = (email, password) => {
         return signInWithEmailAndPassword(auth, email, password)
     }
@@ -70,6 +84,7 @@ export const AuthProvider = ({children}) => {
 
         return unsubscribe
     },[])
+    
 
     const value = {
         currentUser,
