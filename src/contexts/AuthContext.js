@@ -39,18 +39,15 @@ export const AuthProvider = ({children}) => {
 
     const googlesignin = async () => {
         const googleAuthProvider = new GoogleAuthProvider();
-        try {
-            const result = await signInWithPopup(auth, googleAuthProvider);
-            const user = result.user;
-            const additionalUserInfo = getAdditionalUserInfo(result);
 
-            if (additionalUserInfo.isNewUser) {
-                await setDoc(doc(db, 'users', user.email), {
-                    savedMovies: []
-                });
-            }
-        } catch (error) {
-            console.log("Błąd podczas logowania za pomocą konta Google:", error.message);
+        const result = await signInWithPopup(auth, googleAuthProvider);
+        const user = result.user;
+        const additionalUserInfo = getAdditionalUserInfo(result);
+
+        if (additionalUserInfo.isNewUser) {
+            await setDoc(doc(db, 'users', user.email), {
+                savedMovies: []
+            });
         }
     };
 
