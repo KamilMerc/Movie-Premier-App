@@ -59,7 +59,6 @@ const PaginationRec = () => {
       setNextPage(nextPageTmp);
       pageSelection(nextPage);
       window.scrollTo({top: 0, behavior: 'smooth'});
-      console.log(currentPageRec,currnetPageTmp,nextPage,nextPageTmp)
     }
     
   }; 
@@ -76,7 +75,6 @@ const PaginationRec = () => {
       setNextPage(nextPageTmp);
       pageSelection(prevPage);
       window.scrollTo({top: 0, behavior: 'smooth'});
-      console.log(currentPageRec,currnetPageTmp,nextPage,nextPageTmp)
     }
   };
 
@@ -88,7 +86,6 @@ const PaginationRec = () => {
     let key = queryParameter[queryParameter.length - 1].split("=");
     if (key[0] !== "page") {
       let url = lastUrl + `&page=${page}`;
-      console.log(url)
       fetchMovies(url);
     } else {
       key[1] = page.toString();
@@ -96,7 +93,6 @@ const PaginationRec = () => {
       queryParameter[queryParameter.length - 1] = a;
       let b = queryParameter.join("&");
       let url = splitUrl[0] + "?" + b;
-      console.log(url)
       fetchMovies(url);
     }
   };

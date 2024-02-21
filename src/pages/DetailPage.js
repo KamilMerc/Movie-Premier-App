@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { useParams, useLocation } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import DetailPageMovieInfo from "../components/DetailPageMovieInfo";
 import DetailPageBackdrop from "../components/DetailPageBackdrop";
 import DetailPageCast from "../components/DetailPageCast";
@@ -27,7 +27,6 @@ function DetailPage() {
     const backdropImage = `${process.env.REACT_APP_BASE_IMAGE_URL}original/${backdrop}`
     const posterImage = `${process.env.REACT_APP_BASE_IMAGE_URL}original/${poster}`
 
-    const location = useLocation()
     
     async function getMovie() {
         await fetch(URL)

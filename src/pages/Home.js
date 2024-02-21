@@ -52,11 +52,7 @@ function Home() {
 
 //   //API URL
   const URL = `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_API_KEY}&primary_release_date.gte=${queryParamBack()}&primary_release_date.lte=${queryParamForward()}${genre}${filter}&page=${currentPage}`;
-
-  console.log(URL)
-
-
-  
+ 
   //Fetch data from API
   async function fetchMovies(url) {
 

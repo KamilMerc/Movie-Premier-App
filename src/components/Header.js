@@ -1,5 +1,5 @@
 //Imports
-import React, { useEffect, useContext, useRef, useState } from "react";
+import React, { useEffect, useContext, useState } from "react";
 import { PageContext } from "../App";
 import { Link } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";

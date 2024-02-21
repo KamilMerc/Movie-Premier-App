@@ -10,7 +10,6 @@ import {
 } from "firebase/firestore"
 
 const DetailPageMovieInfo = (props) => {
-    console.log(props)
     const [favorite, setFavorite] = useState(false)
     const [moviesFromBase, setMoviesFromBase] = useState([])
     const { currentUser } = useAuth()
