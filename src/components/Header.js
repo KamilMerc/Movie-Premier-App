@@ -1,5 +1,5 @@
 //Imports
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext, useRef, useState } from "react";
 import { PageContext } from "../App";
 import { Link } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
@@ -9,6 +9,7 @@ const Header = () => {
 const {setCurrentPage, setNextPage, setPrevPage, fetchMovies, queryParamBack, queryParamForward, genre, setGenre, filter, setFilter} = useContext(PageContext)
 
 const { currentUser } = useAuth()
+const [isFirstRender, setRender] = useState(true)
 
   //Fetch movies by selected genre
   const fetchWithFilters = () => {
@@ -16,15 +17,21 @@ const { currentUser } = useAuth()
     setCurrentPage(1)
     setNextPage(2)
     setPrevPage(0)
+
     //Passing to fetchMovies function URL with 'with_genre' attribute that allows get movies only with particular genre
-    fetchMovies(`${process.env.REACT_APP_API_URL}${process.env.REACT_APP_API_KEY}&primary_release_date.gte=${queryParamBack()}&primary_release_date.lte=${queryParamForward()}${genre}${filter}
-    `)
+    fetchMovies(`${process.env.REACT_APP_API_URL}${process.env.REACT_APP_API_KEY}&primary_release_date.gte=${queryParamBack()}&primary_release_date.lte=${queryParamForward()}${genre}${filter}`)
     window.scrollTo({top: 0, behavior: 'smooth'});
   }
 
   useEffect(() => {
-      fetchWithFilters()
-  },[genre,filter])
+    if(isFirstRender){
+      setRender(false)
+      return;
+    }
+
+    fetchWithFilters()
+  },[genre, filter])
+
 
     return (
         <header>
