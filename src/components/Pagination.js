@@ -8,6 +8,7 @@ const Pagination = () => {
     //Pagination buttons
   const btnPrev = document.querySelector('.prev');
   const btnNext = document.querySelector('.next');
+  const btnReset = document.querySelector('.first-page')
   
   const {currentPage, nextPage, prevPage, lastUrl, totalPagesNumber, setCurrentPage, setNextPage, setPrevPage, fetchMovies} = useContext(PageContext)
 
@@ -29,9 +30,21 @@ const Pagination = () => {
     }
   }
 
+  const disableResetBtn = () => {
+    if(btnReset) {
+      if(currentPage === 1) {
+        btnReset.classList.add('disabled');
+      }
+      else{
+        btnReset.classList.remove('disabled');
+      }
+    }
+  }
+
   //Calling disableBtns function
   useEffect(() => {
     disableBtns();
+    disableResetBtn();
   }) 
 
   
@@ -89,11 +102,13 @@ const Pagination = () => {
   };
 
   const resetToFirstPage = () => {
-    pageSelection(1)
-    setCurrentPage(1)
-    setNextPage(2)
-    setPrevPage(0)
-    window.scrollTo({top: 0, behavior: 'smooth'});
+    if(currentPage !== 1) {
+      pageSelection(1)
+      setCurrentPage(1)
+      setNextPage(2)
+      setPrevPage(0)
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    }
   }
 
   return (
