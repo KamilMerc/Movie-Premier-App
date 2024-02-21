@@ -8,9 +8,17 @@
 .pagination-btns {
     width: 200px;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     margin: 40px 0 40px 50%;
     transform: translateX(-50%);
+
+    .reset {
+        flex-basis: 100%;
+        button{
+            margin-top: 1.2rem;
+        }
+    }
 
     button {
         padding: 10px 20px;

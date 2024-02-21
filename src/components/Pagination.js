@@ -88,6 +88,14 @@ const Pagination = () => {
     }
   };
 
+  const resetToFirstPage = () => {
+    pageSelection(1)
+    setCurrentPage(1)
+    setNextPage(2)
+    setPrevPage(0)
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  }
+
   return (
     <div className="pagination-btns">
         {/* Calling goToPrevPage function */}
@@ -99,6 +107,10 @@ const Pagination = () => {
         <button onClick={goToNextPage} className="next">
           next
         </button>
+
+        <div className="reset">
+          <button className="first-page" onClick={resetToFirstPage}>1</button>
+        </div>
     </div>
   )
 }
