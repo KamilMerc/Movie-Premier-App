@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 function Error() {
     return(
         <>
-            <h1>Thre is no such page</h1>
+            <h1>There is no such page</h1>
             <Link to="/"><button className="backtohome">Back to Home page</button></Link>
         </>
     )

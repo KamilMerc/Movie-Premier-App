@@ -21,7 +21,11 @@ const UpdateProfile = () => {
         e.preventDefault()
 
         if(passwordRef.current.value !== passwordConfirmRef.current.value) {
-            return setError("Passwords don't match")
+            return setError("Passwords are not the same")
+        }
+
+        if(passwordRef.current.value.length < 6) {
+            return setError("Password is too short")
         }
 
         const promises = []

@@ -51,12 +51,9 @@ const Pagination = () => {
   //Pagination to the next page
   const goToNextPage = () => {
     if (nextPage <= totalPagesNumber) {
-      let nextPageTmp = nextPage + 1;
-      let currnetPageTmp = currentPage + 1;
-      let prevPageTmp = prevPage + 1;
-      setCurrentPage(currnetPageTmp);
-      setPrevPage(prevPageTmp);
-      setNextPage(nextPageTmp);
+      setCurrentPage(currentPage + 1);
+      setPrevPage(prevPage + 1);
+      setNextPage(nextPage + 1);
       pageSelection(nextPage);
       window.scrollTo({top: 0, behavior: 'smooth'});
     }
@@ -67,12 +64,9 @@ const Pagination = () => {
   //Pagination to the previous page
   const goToPrevPage = () => {
     if (prevPage > 0) {
-      let nextPageTmp = nextPage - 1;
-      let currnetPageTmp = currentPage - 1;
-      let prevPageTmp = prevPage - 1;
-      setCurrentPage(currnetPageTmp);
-      setPrevPage(prevPageTmp);
-      setNextPage(nextPageTmp);
+      setCurrentPage(currentPage - 1);
+      setPrevPage(prevPage - 1);
+      setNextPage(nextPage - 1);
       pageSelection(prevPage);
       window.scrollTo({top: 0, behavior: 'smooth'});
     }

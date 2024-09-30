@@ -57,13 +57,13 @@ const DetailPageMovieInfo = (props) => {
     ))
 
     //referencing the database of users that grabing specyfic user email
-    const movieId = doc(db, 'users', `${currentUser?.email}`)
+    const document = doc(db, 'users', `${currentUser?.email}`)
 
     //arrayUnion - update document in firebase
     const saveMovie = async () => {
         if(currentUser?.email) {
             setFavorite(!favorite)
-            await updateDoc(movieId, {
+            await updateDoc(document, {
                savedMovies: arrayUnion({
                 id: props.movie.id,
                 title: props.movie.title,
