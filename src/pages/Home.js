@@ -84,7 +84,7 @@ function Home() {
 
   return (
     <div className="App">
-      <PageContext.Provider value={{movies, setMovies, currentPage, setCurrentPage, prevPage, setPrevPage, nextPage, setNextPage, totalPagesNumber, setTotalPagesNumber, lastUrl, setLastUrl, fetchMovies, queryParamBack, queryParamForward, genre, setGenre, filter, setFilter}}>
+      <PageContext.Provider value={{movies, setMovies, setCurrentPage, prevPage, setPrevPage, nextPage, setNextPage, totalPagesNumber, lastUrl, setLastUrl, fetchMovies, queryParamBack, queryParamForward, genre, setGenre, filter, setFilter}}>
         <Header/>
 
         {/* Calling renderMovies function that places movie cards from 'MovieCard' component into 'container' div*/}
@@ -92,7 +92,7 @@ function Home() {
 
         <PaginationPageInfo currentPage={currentPage} totalPagesNumber={totalPagesNumber}/>
 
-        <Pagination/>
+        <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage}/>
       </PageContext.Provider>
     </div>
   );

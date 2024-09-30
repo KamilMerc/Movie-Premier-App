@@ -7,7 +7,7 @@ import {
 } from "firebase/firestore"
 import MovieCard from "../components/MovieCard";
 import PaginationPageInfo from "../components/PaginationPageInfo";
-import PaginationRec from "../components/PaginationRec";
+import Pagination from "../components/Pagination";
 import { PageContext } from "../App";
 import { Link } from "react-router-dom";
 
@@ -129,7 +129,7 @@ const getGenresString = () => {
                 </>
                  : 
                 <>
-                    <PageContext.Provider value={{movies, setMovies, currentPageRec, setCurrentPageRec, prevPage, setPrevPage, nextPage, setNextPage, totalPagesNumber, setTotalPagesNumber, lastUrl, setLastUrl, fetchMovies}}>
+                    <PageContext.Provider value={{movies, setMovies, prevPage, setPrevPage, nextPage, setNextPage, totalPagesNumber, lastUrl, setLastUrl, fetchMovies}}>
 
                         <div className="recomendation-header">
                           <h2>Your recommendations</h2>
@@ -140,7 +140,7 @@ const getGenresString = () => {
 
                         <PaginationPageInfo currentPage={currentPageRec} totalPagesNumber={totalPagesNumber}/>
 
-                        <PaginationRec/> 
+                        <Pagination currentPage={currentPageRec} setCurrentPage={setCurrentPageRec}/> 
                     </PageContext.Provider>
                 </>
               }

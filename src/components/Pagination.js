@@ -3,23 +3,23 @@ import React from "react";
 import { useEffect, useContext } from "react";
 import { PageContext } from "../App";
 
-const Pagination = () => {
+const Pagination = (props) => {
 
     //Pagination buttons
   const btnPrev = document.querySelector('.prev');
   const btnNext = document.querySelector('.next');
   const btnReset = document.querySelector('.first-page')
   
-  const {currentPage, nextPage, prevPage, lastUrl, totalPagesNumber, setCurrentPage, setNextPage, setPrevPage, fetchMovies} = useContext(PageContext)
+  const {nextPage, prevPage, lastUrl, totalPagesNumber, setNextPage, setPrevPage, fetchMovies} = useContext(PageContext)
 
   //Add or remove 'disabled' class to pagination buttons
   const disableBtns = () => {
     if(btnNext && btnPrev) {
-      if(currentPage <= 1) {
+      if(props.currentPage <= 1) {
         btnPrev.classList.add('disabled');
         btnNext.classList.remove('disabled');
       }
-      else if(currentPage >= totalPagesNumber) {
+      else if(props.currentPage >= totalPagesNumber) {
         btnPrev.classList.remove('disabled');
         btnNext.classList.add('disabled');
       }
@@ -32,7 +32,7 @@ const Pagination = () => {
 
   const disableResetBtn = () => {
     if(btnReset) {
-      if(currentPage === 1) {
+      if(props.currentPage === 1) {
         btnReset.classList.add('disabled');
       }
       else{
@@ -51,7 +51,7 @@ const Pagination = () => {
   //Pagination to the next page
   const goToNextPage = () => {
     if (nextPage <= totalPagesNumber) {
-      setCurrentPage(currentPage + 1);
+      props.setCurrentPage(props.currentPage + 1);
       setPrevPage(prevPage + 1);
       setNextPage(nextPage + 1);
       pageSelection(nextPage);
@@ -64,7 +64,7 @@ const Pagination = () => {
   //Pagination to the previous page
   const goToPrevPage = () => {
     if (prevPage > 0) {
-      setCurrentPage(currentPage - 1);
+      props.setCurrentPage(props.currentPage - 1);
       setPrevPage(prevPage - 1);
       setNextPage(nextPage - 1);
       pageSelection(prevPage);
@@ -92,9 +92,9 @@ const Pagination = () => {
   };
 
   const resetToFirstPage = () => {
-    if(currentPage !== 1) {
+    if(props.currentPage !== 1) {
       pageSelection(1)
-      setCurrentPage(1)
+      props.setCurrentPage(1)
       setNextPage(2)
       setPrevPage(0)
       window.scrollTo({top: 0, behavior: 'smooth'});
