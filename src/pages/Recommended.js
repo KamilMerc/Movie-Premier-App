@@ -138,7 +138,7 @@ const getGenresString = () => {
 
                         <div className="container center recom">{renderMovies()}</div>
 
-                        <PaginationPageInfo currentPage={currentPageRec} totalPagesNumber={totalPagesNumber}/>
+                        <PaginationPageInfo currentPage={currentPageRec} />
 
                         <Pagination currentPage={currentPageRec} setCurrentPage={setCurrentPageRec}/> 
                     </PageContext.Provider>
