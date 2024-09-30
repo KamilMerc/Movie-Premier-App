@@ -6,7 +6,7 @@ import {
     getDoc
 } from "firebase/firestore"
 import MovieCard from "../components/MovieCard";
-import PaginationPageInfoRec from "../components/PaginationPageInfoRec";
+import PaginationPageInfo from "../components/PaginationPageInfo";
 import PaginationRec from "../components/PaginationRec";
 import { PageContext } from "../App";
 import { Link } from "react-router-dom";
@@ -138,7 +138,7 @@ const getGenresString = () => {
 
                         <div className="container center recom">{renderMovies()}</div>
 
-                        <PaginationPageInfoRec/>
+                        <PaginationPageInfo currentPage={currentPageRec} totalPagesNumber={totalPagesNumber}/>
 
                         <PaginationRec/> 
                     </PageContext.Provider>

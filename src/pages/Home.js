@@ -90,7 +90,7 @@ function Home() {
         {/* Calling renderMovies function that places movie cards from 'MovieCard' component into 'container' div*/}
         <div className="container center">{renderMovies()}</div>
 
-        <PaginationPageInfo/>
+        <PaginationPageInfo currentPage={currentPage} totalPagesNumber={totalPagesNumber}/>
 
         <Pagination/>
       </PageContext.Provider>

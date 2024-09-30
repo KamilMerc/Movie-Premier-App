@@ -1,16 +1,13 @@
 //Imports
-import React, {useContext} from "react";
-import { PageContext } from "../App";
+import React from "react";
 
-const PaginationPageInfo = () => {
-
-  const {currentPage, totalPagesNumber} = useContext(PageContext)
+const PaginationPageInfo = (props) => {
 
     return (
         <div className="pagination-page-info">
         {/* Passing current page and total pages numbers to paragraph*/}
         <p>
-          {currentPage} of {totalPagesNumber}
+          {props.currentPage} of {props.totalPagesNumber}
         </p>
       </div>
     )
